@@ -26,4 +26,10 @@ export default defineConfig({
       ignored: ['**/storage/**', '**/tmp/**'],
     },
   },
+
+  css: {
+    modules: {
+      localsConvention: 'camelCaseOnly'
+    }
+  }
 })
