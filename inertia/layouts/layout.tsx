@@ -22,6 +22,12 @@ export interface SidebarItem {
 // ─── Datos del sidebar  (llenar según necesidad) ──────────────────────────────
 
 const SIDEBAR_GROUPS: SidebarGroup[] = [
+  {
+    items: [
+      {label: 'Carreras', href: "/carreras"},
+      {label: "Profesores", href: ""}
+    ]
+  }
   // {
   //   items: [
   //     { label: 'Alumno',                              href: '/administrador/alumnos' },
