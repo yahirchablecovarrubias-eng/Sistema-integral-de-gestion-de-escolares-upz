@@ -6,6 +6,7 @@ import Periodo from '#models/periodo'
 import Materia from '#models/materia'
 
 export default class HistorialMateria extends HistorialMateriaSchema {
+    static table = 'historial_materia'
 	@belongsTo(() => Alumno)
 	declare alumno: BelongsTo<typeof Alumno>
 

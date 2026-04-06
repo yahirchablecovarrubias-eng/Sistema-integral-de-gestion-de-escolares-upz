@@ -6,6 +6,7 @@ import Materia from '#models/materia'
 import Unidad from '#models/unidad'
 
 export default class PlanEstudiosMateria extends PlanEstudiosMateriaSchema {
+    static table = 'plan_estudios_materia'
 	@belongsTo(() => PlanEstudio)
 	declare planEstudio: BelongsTo<typeof PlanEstudio>
 

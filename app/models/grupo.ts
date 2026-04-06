@@ -6,6 +6,8 @@ import Periodo from '#models/periodo'
 import GrupoMateria from '#models/grupoMateria'
 
 export default class Grupo extends GrupoSchema {
+
+    static table ='grupo'
 	@belongsTo(() => Carrera)
 	declare carrera: BelongsTo<typeof Carrera>
 

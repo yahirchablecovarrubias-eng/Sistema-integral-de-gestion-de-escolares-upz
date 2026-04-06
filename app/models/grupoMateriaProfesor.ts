@@ -5,6 +5,8 @@ import GrupoMateria from '#models/grupoMateria'
 import Profesor from '#models/profesor'
 
 export default class GrupoMateriaProfesor extends GrupoMateriaProfesorSchema {
+
+    static table = 'grupo_materia_profesor'
 	@belongsTo(() => GrupoMateria)
 	declare grupoMateria: BelongsTo<typeof GrupoMateria>
 

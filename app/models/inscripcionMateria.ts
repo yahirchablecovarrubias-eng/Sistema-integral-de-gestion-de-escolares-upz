@@ -6,6 +6,7 @@ import GrupoMateria from '#models/grupoMateria'
 import CalificacionUnidad from '#models/calificacionUnidad'
 
 export default class InscripcionMateria extends InscripcionMateriaSchema {
+    static table = 'inscripcion_materia'
 	@belongsTo(() => Inscripcion)
 	declare inscripcion: BelongsTo<typeof Inscripcion>
 

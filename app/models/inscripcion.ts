@@ -6,6 +6,7 @@ import Periodo from '#models/periodo'
 import InscripcionMateria from '#models/inscripcionMateria'
 
 export default class Inscripcion extends InscripcionSchema {
+    static table = 'inscripcion'
 	@belongsTo(() => Alumno)
 	declare alumno: BelongsTo<typeof Alumno>
 

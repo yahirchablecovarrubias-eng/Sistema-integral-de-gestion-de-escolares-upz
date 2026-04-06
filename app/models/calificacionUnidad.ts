@@ -5,6 +5,9 @@ import InscripcionMateria from '#models/inscripcionMateria'
 import Unidad from '#models/unidad'
 
 export default class CalificacionUnidad extends CalificacionUnidadSchema {
+    static table = 'calificacion_unidad'
+
+
 	@belongsTo(() => InscripcionMateria)
 	declare inscripcionMateria: BelongsTo<typeof InscripcionMateria>
 

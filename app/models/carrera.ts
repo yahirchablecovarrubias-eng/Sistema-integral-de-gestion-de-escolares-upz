@@ -6,6 +6,8 @@ import Grupo from '#models/grupo'
 import CarreraCoordinador from '#models/carreraCoordinador'
 
 export default class Carrera extends CarreraSchema {
+    static table = 'carrera'
+    
 	@hasMany(() => PlanEstudio)
 	declare planEstudios: HasMany<typeof PlanEstudio>
 

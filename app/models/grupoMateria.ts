@@ -8,6 +8,8 @@ import Horario from '#models/horario'
 import InscripcionMateria from './inscripcionMateria.ts'
 
 export default class GrupoMateria extends GrupoMateriaSchema {
+
+    static table = 'grupo_materia'
 	@belongsTo(() => Grupo)
 	declare grupo: BelongsTo<typeof Grupo>
 

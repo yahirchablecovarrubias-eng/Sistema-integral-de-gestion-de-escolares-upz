@@ -5,6 +5,8 @@ import Carrera from '#models/carrera'
 import Coordinador from '#models/coordinador'
 
 export default class CarreraCoordinador extends CarreraCoordinadorSchema {
+
+    static table = 'carrera_coordinador'
 	@belongsTo(() => Carrera)
 	declare carrera: BelongsTo<typeof Carrera>
 

@@ -6,6 +6,8 @@ import Inscripcion from '#models/inscripcion'
 import HistorialMateria from '#models/historialMateria'
 
 export default class Alumno extends AlumnoSchema {
+    static table = 'alumno'
+
 	@belongsTo(() => PlanEstudio)
 	declare planEstudio: BelongsTo<typeof PlanEstudio>
 

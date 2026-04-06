@@ -5,6 +5,7 @@ import Edificio from '#models/edificio'
 import Horario from '#models/horario'
 
 export default class Salon extends SalonSchema {
+    static table ='salon'
 	@belongsTo(() => Edificio)
 	declare edificio: BelongsTo<typeof Edificio>
 

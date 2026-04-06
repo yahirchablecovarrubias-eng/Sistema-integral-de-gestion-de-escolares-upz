@@ -5,6 +5,8 @@ import GrupoMateria from '#models/grupoMateria'
 import Salon from '#models/salon'
 
 export default class Horario extends HorarioSchema {
+
+    static table = 'horario'
 	@belongsTo(() => GrupoMateria)
 	declare grupoMateria: BelongsTo<typeof GrupoMateria>
 
