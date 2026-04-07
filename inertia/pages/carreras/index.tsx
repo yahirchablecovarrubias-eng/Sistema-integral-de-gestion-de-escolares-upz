@@ -1,18 +1,17 @@
 import { Data } from '@generated/data'
 
-type PagePops = {
+type PageProps = {
     carreras: Data.Carrera[]
 }
-export default function CarrerasIndex({carreras}: PagePops) {
+export default function CarrerasIndex({carreras}: PageProps) {
     return <>
-        {/* <ul>
+        <ul>
             {carreras.map((e) =>(
                 <li>
                     {e.nombre}
                 </li>
             ))}
-        </ul> */}
-    <h1>Carreras Funciona</h1>
+        </ul>
 
     </>
 }

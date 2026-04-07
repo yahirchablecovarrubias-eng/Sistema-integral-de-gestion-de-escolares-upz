@@ -25,7 +25,7 @@ const SIDEBAR_GROUPS: SidebarGroup[] = [
   {
     items: [
       {label: 'Carreras', href: "/carreras"},
-      {label: "Profesores", href: ""}
+      {label: "Profesores", href: "/profesores"}
     ]
   }
   // {

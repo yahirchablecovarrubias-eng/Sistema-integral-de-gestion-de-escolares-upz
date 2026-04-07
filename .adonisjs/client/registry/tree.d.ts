@@ -6,6 +6,9 @@ export interface ApiDefinition {
   carrera: {
     index: typeof routes['carrera.index']
   }
+  profesor: {
+    index: typeof routes['profesor.index']
+  }
   newAccount: {
     create: typeof routes['new_account.create']
     store: typeof routes['new_account.store']
