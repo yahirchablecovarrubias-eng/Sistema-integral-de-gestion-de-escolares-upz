@@ -1,17 +1,14 @@
 import { Data } from '@generated/data'
+import CarreraCard from '../../Components/statCard'
 
 type PageProps = {
-    carreras: Data.Carrera[]
+  carreras: Data.Carrera[]
 }
-export default function CarrerasIndex({carreras}: PageProps) {
-    return <>
-        <ul>
-            {carreras.map((e) =>(
-                <li>
-                    {e.nombre}
-                </li>
-            ))}
-        </ul>
 
-    </>
+export default function CarrerasIndex({ carreras }: PageProps) {
+
+  return<>
+  <nav></nav>
+  <h1>Carreras</h1>
+  </>
 }

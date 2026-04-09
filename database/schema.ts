@@ -8,7 +8,7 @@ import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
 export class AlumnoSchema extends BaseModel {
-  static $columns = ['apellidoMaterno', 'apellidoPaterno', 'curp', 'id', 'matricula', 'nombre', 'planEstudiosId', 'telefono'] as const
+  static $columns = ['apellidoMaterno', 'apellidoPaterno', 'curp', 'email', 'id', 'matricula', 'nombre', 'planEstudiosId', 'telefono'] as const
   $columns = AlumnoSchema.$columns
   @column()
   declare apellidoMaterno: string | null
@@ -16,6 +16,8 @@ export class AlumnoSchema extends BaseModel {
   declare apellidoPaterno: string | null
   @column()
   declare curp: string | null
+  @column()
+  declare email: string | null
   @column({ isPrimary: true })
   declare id: number
   @column()
@@ -247,7 +249,7 @@ export class PlanEstudiosMateriaSchema extends BaseModel {
 }
 
 export class ProfesorSchema extends BaseModel {
-  static $columns = ['apellidoMaterno', 'apellidoPaterno', 'curp', 'especialidad', 'id', 'noCedulaProfesional', 'nombre', 'rfc'] as const
+  static $columns = ['apellidoMaterno', 'apellidoPaterno', 'curp', 'email', 'especialidad', 'id', 'noCedulaProfesional', 'nombre', 'rfc', 'telefono'] as const
   $columns = ProfesorSchema.$columns
   @column()
   declare apellidoMaterno: string | null
@@ -255,6 +257,8 @@ export class ProfesorSchema extends BaseModel {
   declare apellidoPaterno: string | null
   @column()
   declare curp: string | null
+  @column()
+  declare email: string | null
   @column()
   declare especialidad: string | null
   @column({ isPrimary: true })
@@ -265,6 +269,8 @@ export class ProfesorSchema extends BaseModel {
   declare nombre: string | null
   @column()
   declare rfc: string | null
+  @column()
+  declare telefono: string | null
 }
 
 export class SalonSchema extends BaseModel {

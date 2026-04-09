@@ -17,7 +17,9 @@ export default defineConfig({
   resolve: {
     alias: {
       '~/': `${import.meta.dirname}/inertia/`,
+      '@': `${import.meta.dirname}/inertia/`,
       '@generated': `${import.meta.dirname}/.adonisjs/client/`,
+
     },
   },
 
@@ -30,6 +32,7 @@ export default defineConfig({
   css: {
     modules: {
       localsConvention: 'camelCaseOnly'
-    }
+    },
+
   }
 })

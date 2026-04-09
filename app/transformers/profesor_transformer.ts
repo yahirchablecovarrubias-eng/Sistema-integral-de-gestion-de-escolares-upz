@@ -8,7 +8,9 @@ export default class ProfesorTransformer extends BaseTransformer<Profesor> {
       'nombre',
       'apellidoPaterno',
       'apellidoMaterno',
-      'especialidad'
+      'especialidad',
+      'email',
+      'telefono'
     ])
   }
 }
