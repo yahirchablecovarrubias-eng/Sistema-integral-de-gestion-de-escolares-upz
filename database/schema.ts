@@ -236,16 +236,26 @@ export class PlanEstudioSchema extends BaseModel {
 export class PlanEstudiosMateriaSchema extends BaseModel {
   static $columns = ['creditos', 'cuatrimestre', 'id', 'materiaId', 'planEstudiosId'] as const
   $columns = PlanEstudiosMateriaSchema.$columns
-  @column()
+  @column({
+    columnName: 'creditos'
+  })
   declare creditos: number | null
-  @column()
+  @column({
+    columnName: 'cuatrimestre'
+  })
   declare cuatrimestre: number | null
+
   @column({ isPrimary: true })
   declare id: number
-  @column()
-  declare materiaId: number | null
-  @column()
-  declare planEstudiosId: number | null
+
+  @column({
+    columnName: 'materia_id'
+  })
+  declare materiaId: null | undefined| number
+  @column({
+    columnName: 'plan_estudio_id'
+  })
+  declare planEstudioId: number | null
 }
 
 export class ProfesorSchema extends BaseModel {

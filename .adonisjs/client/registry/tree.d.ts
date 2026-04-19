@@ -5,6 +5,7 @@ export interface ApiDefinition {
   home: typeof routes['home']
   carrera: {
     index: typeof routes['carrera.index']
+    showPlanesEstudio: typeof routes['carrera.show_planes_estudio']
   }
   profesor: {
     index: typeof routes['profesor.index']

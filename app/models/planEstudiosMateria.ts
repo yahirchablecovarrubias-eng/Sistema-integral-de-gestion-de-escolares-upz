@@ -1,5 +1,5 @@
 import { PlanEstudiosMateriaSchema } from '#database/schema'
-import { belongsTo, hasMany } from '@adonisjs/lucid/orm'
+import { belongsTo, column, hasMany } from '@adonisjs/lucid/orm'
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
 import PlanEstudio from '#models/planEstudio'
 import Materia from '#models/materia'
@@ -12,6 +12,7 @@ export default class PlanEstudiosMateria extends PlanEstudiosMateriaSchema {
 
 	@belongsTo(() => Materia)
 	declare materia: BelongsTo<typeof Materia>
+	
 
 	@hasMany(() => Unidad)
 	declare unidades: HasMany<typeof Unidad>

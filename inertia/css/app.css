@@ -339,11 +339,15 @@ body {
 /* ═══════════════════════════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════════════════════════ */
+
+
+     /* --shadow-sm: 0 1px 3px rgba(0,0,0,.10);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.12); */
 @media (max-width: 768px) {
   /* En móvil el sidebar flota encima del contenido */
   .main-content--shifted { margin-left: 0; }
 
-  .sidebar--open { box-shadow: var(--shadow-md); }
+  .sidebar--open { box-shadow: 0px, 4px, 8px, rgba(0, 0, 0, 10); }
 
   .navbar-username { display: none; }
 

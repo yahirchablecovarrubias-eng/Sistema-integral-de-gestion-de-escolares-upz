@@ -43,6 +43,18 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['index']>>>
     }
   }
+  'carrera.show_planes_estudio': {
+    methods: ["GET","HEAD"]
+    pattern: '/carreras/plan_de_estudio'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/carrera_controller').default['showPlanesEstudio']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/carrera_controller').default['showPlanesEstudio']>>>
+    }
+  }
   'new_account.create': {
     methods: ["GET","HEAD"]
     pattern: '/signup'

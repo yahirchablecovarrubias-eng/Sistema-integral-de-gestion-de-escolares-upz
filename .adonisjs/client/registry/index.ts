@@ -24,6 +24,12 @@ const routes = {
     tokens: [{"old":"/profesores","type":0,"val":"profesores","end":""}],
     types: placeholder as Registry['profesor.index']['types'],
   },
+  'carrera.show_planes_estudio': {
+    methods: ["GET","HEAD"],
+    pattern: '/carreras/plan_de_estudio',
+    tokens: [{"old":"/carreras/plan_de_estudio","type":0,"val":"carreras","end":""},{"old":"/carreras/plan_de_estudio","type":0,"val":"plan_de_estudio","end":""}],
+    types: placeholder as Registry['carrera.show_planes_estudio']['types'],
+  },
   'new_account.create': {
     methods: ["GET","HEAD"],
     pattern: '/signup',

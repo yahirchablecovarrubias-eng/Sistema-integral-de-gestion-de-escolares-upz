@@ -6,7 +6,8 @@ import Carrera from '#models/carrera'
 import Alumno from '#models/alumno'
 
 export default class PlanEstudio extends PlanEstudioSchema {
-    static table = 'plan_estudios'
+	static table = 'plan_estudios'
+
 	@hasMany(() => PlanEstudiosMateria)
 	declare materias: HasMany<typeof PlanEstudiosMateria>
 

@@ -1,12 +1,45 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import Carrera from '#models/carrera'
-import { createCarreraPublic } from '../dtos/carreras.ts'
 import CarreraTransformer from '#transformers/carrera_transformer'
+import PlanEstudio from '#models/planEstudio'
+
 export default class CarreraController {
-    async index({inertia}: HttpContext){
+
+    async index({ inertia }: HttpContext) {
         const carreras = await Carrera.query()
+        console.log("Propiedades: " + await Carrera.$columns)
         return inertia.render('carreras/index', {
             carreras: CarreraTransformer.transform(carreras)
         })
+    }
+
+    async showPlanesEstudio({ inertia }: HttpContext) {
+
+        const plan = await PlanEstudio.query().
+            preload('materias', (materiaQuery) => {
+                materiaQuery. preload('materia').
+                orderBy('cuatrimestre', 'asc').
+                select('*')
+            }).firstOrFail()
+
+
+
+        const materiasDelPlan  = plan.materias.map((e) => ({
+            nombre: e.materia.nombre,
+            cuatrimestre: e.cuatrimestre,
+        }))
+        console.log(materiasDelPlan)
+        console.log("Esta es la primera: " + materiasDelPlan[0].nombre)
+
+
+
+        return inertia.render('carreras/plan_de_estudio', {
+            plan: {
+                id: plan.id,
+                nombre: plan.nombre,
+                materias: materiasDelPlan
+            }
+        })
+
     }
 }

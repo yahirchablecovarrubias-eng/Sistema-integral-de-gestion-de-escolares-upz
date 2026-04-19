@@ -5,6 +5,7 @@ import Profesor from '#models/profesor'
 export default class ProfesorController{
     async index ({inertia}: HttpContext){
         const profesores = await Profesor.query()
+        console.log("Profesores: " + profesores.toString())
         return inertia.render('profesores/index', {
             profesores: ProfesorTransformer.transform(profesores)
         })

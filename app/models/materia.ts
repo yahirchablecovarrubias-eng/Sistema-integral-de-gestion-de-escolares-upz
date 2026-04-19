@@ -16,3 +16,4 @@ export default class Materia extends MateriaSchema {
 	@hasMany(() => HistorialMateria)
 	declare historiales: HasMany<typeof HistorialMateria>
 }
+	
