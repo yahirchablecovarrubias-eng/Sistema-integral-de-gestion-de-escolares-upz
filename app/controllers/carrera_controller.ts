@@ -14,8 +14,11 @@ export default class CarreraController {
     }
 
     async showPlanesEstudio({ inertia }: HttpContext) {
+        const planId = 1;
+        console.log("estoy entrando id del plan: " + planId)
 
         const plan = await PlanEstudio.query().
+            where('id', planId).
             preload('materias', (materiaQuery) => {
                 materiaQuery. preload('materia').
                 orderBy('cuatrimestre', 'asc').

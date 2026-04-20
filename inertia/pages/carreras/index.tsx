@@ -28,6 +28,7 @@ export default function CarrerasIndex({ carreras }: PageProps) {
       {carreras.map((e)=>(
         <li>
           {e.nombre}
+          <span>{e.descripcion}</span>
         </li>
         
       ))}

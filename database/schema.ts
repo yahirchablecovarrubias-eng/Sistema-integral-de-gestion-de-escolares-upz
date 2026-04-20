@@ -44,8 +44,10 @@ export class CalificacionUnidadSchema extends BaseModel {
 }
 
 export class CarreraSchema extends BaseModel {
-  static $columns = ['id', 'nombre'] as const
+  static $columns = ['descripcion', 'id', 'nombre'] as const
   $columns = CarreraSchema.$columns
+  @column()
+  declare descripcion: string | null
   @column({ isPrimary: true })
   declare id: number
   @column()
@@ -234,27 +236,17 @@ export class PlanEstudioSchema extends BaseModel {
 }
 
 export class PlanEstudiosMateriaSchema extends BaseModel {
-  static $columns = ['creditos', 'cuatrimestre', 'id', 'materiaId', 'planEstudiosId'] as const
+  static $columns = ['creditos', 'cuatrimestre', 'id', 'materiaId', 'planEstudioId'] as const
   $columns = PlanEstudiosMateriaSchema.$columns
-  @column({
-    columnName: 'creditos'
-  })
+  @column()
   declare creditos: number | null
-  @column({
-    columnName: 'cuatrimestre'
-  })
+  @column()
   declare cuatrimestre: number | null
-
   @column({ isPrimary: true })
   declare id: number
-
-  @column({
-    columnName: 'materia_id'
-  })
-  declare materiaId: null | undefined| number
-  @column({
-    columnName: 'plan_estudio_id'
-  })
+  @column()
+  declare materiaId: number | null
+  @column()
   declare planEstudioId: number | null
 }
 
