@@ -21,10 +21,10 @@ export interface PlanProps {
     materias: MateriaPlan[]          
 }
 
-interface PageProps {                    // ← Este es el nombre importante
+interface PageProps {                    
   plan: PlanProps  
 }   
-           
+
 export default function PlanEstudio({ plan }: PageProps) {
   return (
     <>

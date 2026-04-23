@@ -27,7 +27,7 @@ export default function PlanEstudioCard({ nombre, materias }: PlanEstudioCardPro
 
             <div className={styles.planHeader}>
                 <span className={styles.planTag}>Plan de estudios</span>
-                <h2 className={styles.planNombre}>{nombre}</h2>
+                <h2 className={styles.planNombre}>{nombre}</h2>     
                 <p className={styles.planMeta}>
                     {materias.length} materias · {cuatrimestres.length} cuatrimestres
                 </p>

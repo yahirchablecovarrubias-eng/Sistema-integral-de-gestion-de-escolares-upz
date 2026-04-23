@@ -45,11 +45,11 @@ export interface Registry {
   }
   'carrera.show_planes_estudio': {
     methods: ["GET","HEAD"]
-    pattern: '/carreras/plan_de_estudio'
+    pattern: '/carreras/:id/plan_de_estudio'
     types: {
       body: {}
-      paramsTuple: []
-      params: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
       query: {}
       response: ExtractResponse<Awaited<ReturnType<import('#controllers/carrera_controller').default['showPlanesEstudio']>>>
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/carrera_controller').default['showPlanesEstudio']>>>

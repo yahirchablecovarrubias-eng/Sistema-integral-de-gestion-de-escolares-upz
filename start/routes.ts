@@ -15,7 +15,7 @@ router.on('/').renderInertia('home', {}).as('home')
 
 router.get('/carreras', [controllers.Carrera, 'index'])
 router.get('/profesores', [controllers.Profesor, 'index'])
-router.get('/carreras/plan_de_estudio', [controllers.Carrera, 'showPlanesEstudio'])
+router.get('/carreras/:id/plan_de_estudio', [controllers.Carrera, 'showPlanesEstudio'])
 
 router
   .group(() => {

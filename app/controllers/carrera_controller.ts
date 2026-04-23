@@ -13,36 +13,52 @@ export default class CarreraController {
         })
     }
 
-    async showPlanesEstudio({ inertia }: HttpContext) {
-        const planId = 1;
-        console.log("estoy entrando id del plan: " + planId)
+    async showPlanesEstudio({ inertia, params }: HttpContext) {
+        const carreraId = params.id;
+        
 
-        const plan = await PlanEstudio.query().
-            where('id', planId).
-            preload('materias', (materiaQuery) => {
-                materiaQuery. preload('materia').
-                orderBy('cuatrimestre', 'asc').
-                select('*')
-            }).firstOrFail()
+        if (carreraId!=3) {
 
-
-
-        const materiasDelPlan  = plan.materias.map((e) => ({
-            nombre: e.materia.nombre,
-            cuatrimestre: e.cuatrimestre,
-        }))
-        console.log(materiasDelPlan)
-        console.log("Esta es la primera: " + materiasDelPlan[0].nombre)
+            const plan = await PlanEstudio.query().
+                where('carrera_id', carreraId).
+                preload('materias', (materiaQuery) => {
+                    materiaQuery.preload('materia').
+                        orderBy('cuatrimestre', 'asc').
+                        select('*')
+                }).firstOrFail()
 
 
 
-        return inertia.render('carreras/plan_de_estudio', {
-            plan: {
-                id: plan.id,
-                nombre: plan.nombre,
-                materias: materiasDelPlan
-            }
-        })
+            const materiasDelPlan = plan.materias.map((e) => ({
+                nombre: e.materia.nombre,
+                cuatrimestre: e.cuatrimestre,
+            }))
+            console.log(materiasDelPlan)
+            console.log("Esta es la primera: " + materiasDelPlan[0].nombre)
+
+            return inertia.render('carreras/plan_de_estudio', {
+                plan: {
+                    id: plan.id,
+                    nombre: plan.nombre,
+                    materias: materiasDelPlan
+                }
+            })
+        }
+        else {
+            const carreraSinPlan = await Carrera.query().where('id', carreraId)
+            console.log("La carrera sin plan es: " + carreraSinPlan)
+            return inertia.render('carreras/noData', {
+                carreraSinPlan: CarreraTransformer.transform(carreraSinPlan)
+            })
+        }
+
+
+
+
+
+
+
+
 
     }
 }
