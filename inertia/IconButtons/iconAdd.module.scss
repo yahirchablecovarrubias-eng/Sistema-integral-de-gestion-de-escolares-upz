@@ -1,0 +1,14 @@
+.btn-add{
+  background-color: var(--color-primary-mid);
+  color: var(--color-text-light);
+  border-radius: 9999px;
+  padding: 10px 20px 10px 20px;
+  box-shadow: 1px 1px 5px 0px #0000002a;
+  transition: all 300ms ease-in-out;
+
+}
+.btn-add:hover{
+  background-color: var(--color-primary-light);
+  transition: all 300ms ease-in-out;
+
+}

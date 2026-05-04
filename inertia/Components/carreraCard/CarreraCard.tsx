@@ -31,7 +31,7 @@ export default function CarreraCard({ id, nombre, descripcion, imagen }: Carrera
 
             {/* ── Cuerpo ── */}
             <div className={styles.cardBody}>
-                <span className={styles.cardTag}>Carrera</span>
+                <span className={styles.cardTag}>Licenciatura</span>
                 <h3 className={styles.cardNombre}>{nombre}</h3>
                 {descripcion && (
                     <p className={styles.cardDesc}>{descripcion}</p>
@@ -44,7 +44,7 @@ export default function CarreraCard({ id, nombre, descripcion, imagen }: Carrera
                     href={`/carreras/${id}/plan_de_estudio`}
                     className={styles.planLink}
                 >
-                    Plan de estudios
+                    consultar plan de estudios
                     <span className={styles.planArrow}>→</span>
                 </Link>
             </div>

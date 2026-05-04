@@ -2,6 +2,7 @@ import type { HttpContext } from '@adonisjs/core/http'
 import Carrera from '#models/carrera'
 import CarreraTransformer from '#transformers/carrera_transformer'
 import PlanEstudio from '#models/planEstudio'
+import Profesor from '#models/profesor'
 
 export default class CarreraController {
 
@@ -15,9 +16,8 @@ export default class CarreraController {
 
     async showPlanesEstudio({ inertia, params }: HttpContext) {
         const carreraId = params.id;
-        
 
-        if (carreraId!=3) {
+        try {
 
             const plan = await PlanEstudio.query().
                 where('carrera_id', carreraId).
@@ -43,22 +43,16 @@ export default class CarreraController {
                     materias: materiasDelPlan
                 }
             })
-        }
-        else {
+        } catch (error) {
             const carreraSinPlan = await Carrera.query().where('id', carreraId)
             console.log("La carrera sin plan es: " + carreraSinPlan)
             return inertia.render('carreras/noData', {
                 carreraSinPlan: CarreraTransformer.transform(carreraSinPlan)
             })
+
         }
 
-
-
-
-
-
-
-
-
     }
+
+
 }

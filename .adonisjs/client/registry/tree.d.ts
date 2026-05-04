@@ -9,6 +9,9 @@ export interface ApiDefinition {
   }
   profesor: {
     index: typeof routes['profesor.index']
+    showFormProfesor: typeof routes['profesor.show_form_profesor']
+    addProfesor: typeof routes['profesor.add_profesor']
+    deleteProfesor: typeof routes['profesor.delete_profesor']
   }
   newAccount: {
     create: typeof routes['new_account.create']

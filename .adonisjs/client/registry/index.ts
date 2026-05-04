@@ -24,6 +24,24 @@ const routes = {
     tokens: [{"old":"/profesores","type":0,"val":"profesores","end":""}],
     types: placeholder as Registry['profesor.index']['types'],
   },
+  'profesor.show_form_profesor': {
+    methods: ["GET","HEAD"],
+    pattern: '/profesores/agregar',
+    tokens: [{"old":"/profesores/agregar","type":0,"val":"profesores","end":""},{"old":"/profesores/agregar","type":0,"val":"agregar","end":""}],
+    types: placeholder as Registry['profesor.show_form_profesor']['types'],
+  },
+  'profesor.add_profesor': {
+    methods: ["POST"],
+    pattern: '/profesores/agregar',
+    tokens: [{"old":"/profesores/agregar","type":0,"val":"profesores","end":""},{"old":"/profesores/agregar","type":0,"val":"agregar","end":""}],
+    types: placeholder as Registry['profesor.add_profesor']['types'],
+  },
+  'profesor.delete_profesor': {
+    methods: ["DELETE"],
+    pattern: '/profesores/eliminar/:id',
+    tokens: [{"old":"/profesores/eliminar/:id","type":0,"val":"profesores","end":""},{"old":"/profesores/eliminar/:id","type":0,"val":"eliminar","end":""},{"old":"/profesores/eliminar/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['profesor.delete_profesor']['types'],
+  },
   'carrera.show_planes_estudio': {
     methods: ["GET","HEAD"],
     pattern: '/carreras/:id/plan_de_estudio',

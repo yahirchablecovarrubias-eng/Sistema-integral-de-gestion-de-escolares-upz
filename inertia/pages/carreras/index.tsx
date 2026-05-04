@@ -8,6 +8,7 @@ type PageProps = {
   carreras: Data.Carrera[]
 }
 
+
 const TABS: SubNavItem[] = [
   { label: 'Panel Principal',            href: '/carreras' },
   { label: 'Planes de estudio',          href: '/carreras/plan_de_estudio' },
@@ -38,7 +39,7 @@ export default function CarrerasIndex({ carreras }: PageProps) {
                 key={carrera.id}
                 id={carrera.id}
                 nombre={carrera.nombre}
-                descripcion={carrera.descripcion}
+                descripcion={carrera.descripcion}   
                 /* imagen={carrera.imagen} */   // descomenta cuando agregues la columna al modelo
               />
             ))}

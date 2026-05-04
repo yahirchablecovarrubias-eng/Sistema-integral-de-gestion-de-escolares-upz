@@ -43,6 +43,42 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['index']>>>
     }
   }
+  'profesor.show_form_profesor': {
+    methods: ["GET","HEAD"]
+    pattern: '/profesores/agregar'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['showFormProfesor']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['showFormProfesor']>>>
+    }
+  }
+  'profesor.add_profesor': {
+    methods: ["POST"]
+    pattern: '/profesores/agregar'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['addProfesor']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['addProfesor']>>>
+    }
+  }
+  'profesor.delete_profesor': {
+    methods: ["DELETE"]
+    pattern: '/profesores/eliminar/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['deleteProfesor']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['deleteProfesor']>>>
+    }
+  }
   'carrera.show_planes_estudio': {
     methods: ["GET","HEAD"]
     pattern: '/carreras/:id/plan_de_estudio'

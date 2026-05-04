@@ -33,6 +33,7 @@ export default function PlanEstudio({ plan }: PageProps) {
       <PlanEstudioCard
         nombre={plan.nombre}
         materias={plan.materias}
+  
       />
     </>
   )

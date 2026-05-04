@@ -1,5 +1,6 @@
 import styles from './WildCard.module.scss'
 import { Data } from '@generated/data'
+import IconBtn from '~/IconButtons/IconBtn'
 
 // ─── Tipos ────────────────────────────────────────────────────────────────────
 
@@ -9,7 +10,7 @@ export interface WildCardProps {
 
 // ─── Componente ───────────────────────────────────────────────────────────────
 
-export default function StatCard({ profesor }: WildCardProps) {
+export default function ProfesorCard({ profesor }: WildCardProps) {
   return (
     <div className={styles.cardStat}>
 
@@ -35,8 +36,15 @@ export default function StatCard({ profesor }: WildCardProps) {
 
       {/* Botones de acción — agregar <IconBtn> aquí cuando esté listo */}
       <div className={styles.actionButtons}>
-        {/* <IconBtn profesor={profesor} tipo={2} /> */}
-        {/* <IconBtn profesor={profesor} tipo={1} /> */}
+        
+        <IconBtn
+        profesor={profesor}
+        tipo={1}
+        />
+        <IconBtn
+        profesor={profesor}
+        tipo={2}
+        />
       </div>
 
     </div>

@@ -1,8 +1,9 @@
 import { Data } from "@generated/data";
 import styles from './profesores.module.scss'
-import StatCard from "../../Components/statCard";
+import ProfesorCard from "../../Components/profesorCard";
 import SubNav from "~/Components/subnav/SubNav";
 import { SubNavItem } from "~/Components/subnav/SubNav";
+import AddButton from "~/IconButtons/AddButton";
 type PageProps = {
     profesores: Data.Profesor[]
 }
@@ -27,12 +28,19 @@ export default function profesorIndex({ profesores }: PageProps) {
 
         <div className={styles.profesoresList}>
             {profesores.map((e) => (
-                <StatCard
+                <ProfesorCard
                     profesor={e}
                 />
             ))}
 
         </div>
+    <div>
+        <AddButton
+        direccion="/profesores/agregar"
+        className="fab-buton"
+        />
+
+    </div>
 
     </>
 }

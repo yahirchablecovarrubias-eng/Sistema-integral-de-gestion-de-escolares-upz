@@ -7,6 +7,9 @@ export type ScannedRoutes = {
     'home': { paramsTuple?: []; params?: {} }
     'carrera.index': { paramsTuple?: []; params?: {} }
     'profesor.index': { paramsTuple?: []; params?: {} }
+    'profesor.show_form_profesor': { paramsTuple?: []; params?: {} }
+    'profesor.add_profesor': { paramsTuple?: []; params?: {} }
+    'profesor.delete_profesor': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'carrera.show_planes_estudio': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'new_account.create': { paramsTuple?: []; params?: {} }
     'new_account.store': { paramsTuple?: []; params?: {} }
@@ -18,6 +21,7 @@ export type ScannedRoutes = {
     'home': { paramsTuple?: []; params?: {} }
     'carrera.index': { paramsTuple?: []; params?: {} }
     'profesor.index': { paramsTuple?: []; params?: {} }
+    'profesor.show_form_profesor': { paramsTuple?: []; params?: {} }
     'carrera.show_planes_estudio': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'new_account.create': { paramsTuple?: []; params?: {} }
     'session.create': { paramsTuple?: []; params?: {} }
@@ -26,14 +30,19 @@ export type ScannedRoutes = {
     'home': { paramsTuple?: []; params?: {} }
     'carrera.index': { paramsTuple?: []; params?: {} }
     'profesor.index': { paramsTuple?: []; params?: {} }
+    'profesor.show_form_profesor': { paramsTuple?: []; params?: {} }
     'carrera.show_planes_estudio': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'new_account.create': { paramsTuple?: []; params?: {} }
     'session.create': { paramsTuple?: []; params?: {} }
   }
   POST: {
+    'profesor.add_profesor': { paramsTuple?: []; params?: {} }
     'new_account.store': { paramsTuple?: []; params?: {} }
     'session.store': { paramsTuple?: []; params?: {} }
     'session.destroy': { paramsTuple?: []; params?: {} }
+  }
+  DELETE: {
+    'profesor.delete_profesor': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
 }
 declare module '@adonisjs/core/types/http' {
