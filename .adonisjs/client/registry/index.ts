@@ -36,6 +36,18 @@ const routes = {
     tokens: [{"old":"/profesores/agregar","type":0,"val":"profesores","end":""},{"old":"/profesores/agregar","type":0,"val":"agregar","end":""}],
     types: placeholder as Registry['profesor.add_profesor']['types'],
   },
+  'profesor.show_edit_form': {
+    methods: ["GET","HEAD"],
+    pattern: '/profesores/editar/:id',
+    tokens: [{"old":"/profesores/editar/:id","type":0,"val":"profesores","end":""},{"old":"/profesores/editar/:id","type":0,"val":"editar","end":""},{"old":"/profesores/editar/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['profesor.show_edit_form']['types'],
+  },
+  'profesor.update_profesor': {
+    methods: ["PUT"],
+    pattern: '/profesores/editar/:id',
+    tokens: [{"old":"/profesores/editar/:id","type":0,"val":"profesores","end":""},{"old":"/profesores/editar/:id","type":0,"val":"editar","end":""},{"old":"/profesores/editar/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['profesor.update_profesor']['types'],
+  },
   'profesor.delete_profesor': {
     methods: ["DELETE"],
     pattern: '/profesores/eliminar/:id',

@@ -9,6 +9,8 @@ export type ScannedRoutes = {
     'profesor.index': { paramsTuple?: []; params?: {} }
     'profesor.show_form_profesor': { paramsTuple?: []; params?: {} }
     'profesor.add_profesor': { paramsTuple?: []; params?: {} }
+    'profesor.show_edit_form': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'profesor.update_profesor': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'profesor.delete_profesor': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'carrera.show_planes_estudio': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'new_account.create': { paramsTuple?: []; params?: {} }
@@ -22,6 +24,7 @@ export type ScannedRoutes = {
     'carrera.index': { paramsTuple?: []; params?: {} }
     'profesor.index': { paramsTuple?: []; params?: {} }
     'profesor.show_form_profesor': { paramsTuple?: []; params?: {} }
+    'profesor.show_edit_form': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'carrera.show_planes_estudio': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'new_account.create': { paramsTuple?: []; params?: {} }
     'session.create': { paramsTuple?: []; params?: {} }
@@ -31,6 +34,7 @@ export type ScannedRoutes = {
     'carrera.index': { paramsTuple?: []; params?: {} }
     'profesor.index': { paramsTuple?: []; params?: {} }
     'profesor.show_form_profesor': { paramsTuple?: []; params?: {} }
+    'profesor.show_edit_form': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'carrera.show_planes_estudio': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'new_account.create': { paramsTuple?: []; params?: {} }
     'session.create': { paramsTuple?: []; params?: {} }
@@ -40,6 +44,9 @@ export type ScannedRoutes = {
     'new_account.store': { paramsTuple?: []; params?: {} }
     'session.store': { paramsTuple?: []; params?: {} }
     'session.destroy': { paramsTuple?: []; params?: {} }
+  }
+  PUT: {
+    'profesor.update_profesor': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   DELETE: {
     'profesor.delete_profesor': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }

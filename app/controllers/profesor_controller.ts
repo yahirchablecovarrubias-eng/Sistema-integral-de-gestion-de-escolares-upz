@@ -12,18 +12,42 @@ export default class ProfesorController {
         })
     }
 
+    // Alta — sin profesor en props
     async showFormProfesor({ inertia }: HttpContext) {
         return inertia.render('profesores/Agregar', {})
     }
 
+    // Edición — manda el profesor completo al form
+    async showEditForm({ inertia, params }: HttpContext) {
+        const profesor = await Profesor.findOrFail(params.id)
+
+        return inertia.render('profesores/Agregar', {
+            profesor: {
+                id:                  profesor.id,
+                nombre:              profesor.nombre              ?? '',
+                apellidoPaterno:     profesor.apellidoPaterno     ?? '',
+                apellidoMaterno:     profesor.apellidoMaterno     ?? '',
+                curp:                profesor.curp                ?? '',
+                email:               profesor.email               ?? '',
+                especialidad:        profesor.especialidad        ?? '',
+                noCedulaProfesional: profesor.noCedulaProfesional ?? '',
+                rfc:                 profesor.rfc                 ?? '',
+                telefono:            profesor.telefono            ?? '',
+            }
+        })
+    }
+
     async addProfesor({ request, response }: HttpContext) {
-        // validateUsing lanza una excepción si falla la validación.
-        // Inertia la intercepta automáticamente y regresa los errores
-        // por campo al frontend sin necesidad de manejo manual.
         const data = await request.validateUsing(createProfesorValidator)
-
         await Profesor.create(data)
+        return response.redirect('/profesores')
+    }
 
+    async updateProfesor({ request, response, params }: HttpContext) {
+        const profesor = await Profesor.findOrFail(params.id)
+        const data = await request.validateUsing(createProfesorValidator)
+        profesor.merge(data)
+        await profesor.save()
         return response.redirect('/profesores')
     }
 

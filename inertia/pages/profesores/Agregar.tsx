@@ -23,32 +23,57 @@ type ProfesorForm = {
     telefono: string
 }
 
-export default function AgregarProfesor() {
-    const { data, setData, post, processing, errors, reset } = useForm<ProfesorForm>({
-        nombre: '',
-        apellidoPaterno: '',
-        apellidoMaterno: '',
-        curp: '',
-        email: '',
-        especialidad: '',
-        noCedulaProfesional: '',
-        rfc: '',
-        telefono: '',
-    })
+// El prop profesor solo existe en modo edición
+type PageProps = {
+    profesor?: ProfesorForm & { id: number }
+}
+
+function formatTelefono(value: string): string {
+    const digits = value.replace(/\D/g, '').slice(0, 10)
+    if (digits.length <= 3) return digits
+    if (digits.length <= 6) return `${digits.slice(0, 3)}-${digits.slice(3)}`
+    return `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`
+}
+
+const EMPTY: ProfesorForm = {
+    nombre: '',
+    apellidoPaterno: '',
+    apellidoMaterno: '',
+    curp: '',
+    email: '',
+    especialidad: '',
+    noCedulaProfesional: '',
+    rfc: '',
+    telefono: '',
+}
+
+export default function AgregarProfesor({ profesor }: PageProps) {
+    const esEdicion = !!profesor
+
+    const { data, setData, post, put, processing, errors, reset } = useForm<ProfesorForm>(
+        // Si hay profesor, inicializa con sus datos; si no, el formulario vacío
+        profesor
+            ? {
+                nombre: profesor.nombre,
+                apellidoPaterno: profesor.apellidoPaterno,
+                apellidoMaterno: profesor.apellidoMaterno,
+                curp: profesor.curp,
+                email: profesor.email,
+                especialidad: profesor.especialidad,
+                noCedulaProfesional: profesor.noCedulaProfesional,
+                rfc: profesor.rfc,
+                telefono: profesor.telefono,
+            }
+            : EMPTY
+    )
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault()
-        post('/profesores/agregar', {
-            onSuccess: () => reset(),
-        })
-    }
-    function formatTelefono(value: string): string {
-        // Solo deja pasar dígitos
-        const digits = value.replace(/\D/g, '').slice(0, 10)
-
-        if (digits.length <= 3) return digits
-        if (digits.length <= 6) return `${digits.slice(0, 3)}-${digits.slice(3)}`
-        return `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`
+        if (esEdicion) {
+            put(`/profesores/editar/${profesor!.id}`)
+        } else {
+            post('/profesores/agregar', { onSuccess: () => reset() })
+        }
     }
 
     return (
@@ -58,12 +83,17 @@ export default function AgregarProfesor() {
             <div className={styles.pageWrapper}>
                 <div className={styles.formCard}>
 
-                    {/* Header */}
                     <div className={styles.formHeader}>
                         <div className={styles.headerAccent} />
                         <div>
-                            <h2 className={styles.formTitle}>Nuevo Profesor</h2>
-                            <p className={styles.formSubtitle}>Complete todos los campos para registrar al docente en el sistema</p>
+                            <h2 className={styles.formTitle}>
+                                {esEdicion ? 'Editar Profesor' : 'Nuevo Profesor'}
+                            </h2>
+                            <p className={styles.formSubtitle}>
+                                {esEdicion
+                                    ? 'Modifica los campos que deseas actualizar'
+                                    : 'Complete todos los campos para registrar al docente en el sistema'}
+                            </p>
                         </div>
                     </div>
 
@@ -84,7 +114,7 @@ export default function AgregarProfesor() {
                                         type="text"
                                         className={`${styles.input} ${errors.nombre ? styles.inputError : ''}`}
                                         value={data.nombre}
-                                        onChange={e => setData('nombre', e.target.value.toUpperCase())}
+                                        onChange={e => setData('nombre', e.target.value)}
                                         placeholder="Ej. Juan Carlos"
                                     />
                                     {errors.nombre && <span className={styles.errorMsg}>{errors.nombre}</span>}
@@ -97,7 +127,7 @@ export default function AgregarProfesor() {
                                         type="text"
                                         className={`${styles.input} ${errors.apellidoPaterno ? styles.inputError : ''}`}
                                         value={data.apellidoPaterno}
-                                        onChange={e => setData('apellidoPaterno', e.target.value.toUpperCase())}
+                                        onChange={e => setData('apellidoPaterno', e.target.value)}
                                         placeholder="Ej. García"
                                     />
                                     {errors.apellidoPaterno && <span className={styles.errorMsg}>{errors.apellidoPaterno}</span>}
@@ -110,7 +140,7 @@ export default function AgregarProfesor() {
                                         type="text"
                                         className={`${styles.input} ${errors.apellidoMaterno ? styles.inputError : ''}`}
                                         value={data.apellidoMaterno}
-                                        onChange={e => setData('apellidoMaterno', e.target.value.toUpperCase())}
+                                        onChange={e => setData('apellidoMaterno', e.target.value)}
                                         placeholder="Ej. López"
                                     />
                                     {errors.apellidoMaterno && <span className={styles.errorMsg}>{errors.apellidoMaterno}</span>}
@@ -140,7 +170,7 @@ export default function AgregarProfesor() {
                                         value={data.telefono}
                                         onChange={e => setData('telefono', formatTelefono(e.target.value))}
                                         placeholder="492-000-0000"
-                                        maxLength={12} // 10 dígitos + 2 guiones
+                                        maxLength={12}
                                     />
                                     {errors.telefono && <span className={styles.errorMsg}>{errors.telefono}</span>}
                                 </div>
@@ -238,7 +268,7 @@ export default function AgregarProfesor() {
                                         Guardando...
                                     </>
                                 ) : (
-                                    'Registrar Profesor'
+                                    esEdicion ? 'Guardar Cambios' : 'Registrar Profesor'
                                 )}
                             </button>
                         </div>

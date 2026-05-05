@@ -11,6 +11,8 @@ export interface ApiDefinition {
     index: typeof routes['profesor.index']
     showFormProfesor: typeof routes['profesor.show_form_profesor']
     addProfesor: typeof routes['profesor.add_profesor']
+    showEditForm: typeof routes['profesor.show_edit_form']
+    updateProfesor: typeof routes['profesor.update_profesor']
     deleteProfesor: typeof routes['profesor.delete_profesor']
   }
   newAccount: {

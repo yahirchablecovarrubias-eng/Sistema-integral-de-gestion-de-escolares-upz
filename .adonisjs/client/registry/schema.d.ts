@@ -67,6 +67,30 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['addProfesor']>>> | { status: 422; response: { errors: SimpleError[] } }
     }
   }
+  'profesor.show_edit_form': {
+    methods: ["GET","HEAD"]
+    pattern: '/profesores/editar/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['showEditForm']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['showEditForm']>>>
+    }
+  }
+  'profesor.update_profesor': {
+    methods: ["PUT"]
+    pattern: '/profesores/editar/:id'
+    types: {
+      body: ExtractBody<InferInput<(typeof import('#validators/profesor_validator').createProfesorValidator)>>
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: ExtractQuery<InferInput<(typeof import('#validators/profesor_validator').createProfesorValidator)>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['updateProfesor']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['updateProfesor']>>> | { status: 422; response: { errors: SimpleError[] } }
+    }
+  }
   'profesor.delete_profesor': {
     methods: ["DELETE"]
     pattern: '/profesores/eliminar/:id'
