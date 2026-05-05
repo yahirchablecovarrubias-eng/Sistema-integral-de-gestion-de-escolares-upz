@@ -42,6 +42,14 @@ export default function AgregarProfesor() {
             onSuccess: () => reset(),
         })
     }
+    function formatTelefono(value: string): string {
+        // Solo deja pasar dígitos
+        const digits = value.replace(/\D/g, '').slice(0, 10)
+
+        if (digits.length <= 3) return digits
+        if (digits.length <= 6) return `${digits.slice(0, 3)}-${digits.slice(3)}`
+        return `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`
+    }
 
     return (
         <>
@@ -76,7 +84,7 @@ export default function AgregarProfesor() {
                                         type="text"
                                         className={`${styles.input} ${errors.nombre ? styles.inputError : ''}`}
                                         value={data.nombre}
-                                        onChange={e => setData('nombre', e.target.value)}
+                                        onChange={e => setData('nombre', e.target.value.toUpperCase())}
                                         placeholder="Ej. Juan Carlos"
                                     />
                                     {errors.nombre && <span className={styles.errorMsg}>{errors.nombre}</span>}
@@ -89,7 +97,7 @@ export default function AgregarProfesor() {
                                         type="text"
                                         className={`${styles.input} ${errors.apellidoPaterno ? styles.inputError : ''}`}
                                         value={data.apellidoPaterno}
-                                        onChange={e => setData('apellidoPaterno', e.target.value)}
+                                        onChange={e => setData('apellidoPaterno', e.target.value.toUpperCase())}
                                         placeholder="Ej. García"
                                     />
                                     {errors.apellidoPaterno && <span className={styles.errorMsg}>{errors.apellidoPaterno}</span>}
@@ -102,7 +110,7 @@ export default function AgregarProfesor() {
                                         type="text"
                                         className={`${styles.input} ${errors.apellidoMaterno ? styles.inputError : ''}`}
                                         value={data.apellidoMaterno}
-                                        onChange={e => setData('apellidoMaterno', e.target.value)}
+                                        onChange={e => setData('apellidoMaterno', e.target.value.toUpperCase())}
                                         placeholder="Ej. López"
                                     />
                                     {errors.apellidoMaterno && <span className={styles.errorMsg}>{errors.apellidoMaterno}</span>}
@@ -130,8 +138,9 @@ export default function AgregarProfesor() {
                                         type="tel"
                                         className={`${styles.input} ${errors.telefono ? styles.inputError : ''}`}
                                         value={data.telefono}
-                                        onChange={e => setData('telefono', e.target.value)}
-                                        placeholder="492 000 0000"
+                                        onChange={e => setData('telefono', formatTelefono(e.target.value))}
+                                        placeholder="492-000-0000"
+                                        maxLength={12} // 10 dígitos + 2 guiones
                                     />
                                     {errors.telefono && <span className={styles.errorMsg}>{errors.telefono}</span>}
                                 </div>
@@ -205,7 +214,7 @@ export default function AgregarProfesor() {
                                         type="text"
                                         className={`${styles.input} ${errors.especialidad ? styles.inputError : ''}`}
                                         value={data.especialidad}
-                                        onChange={e => setData('especialidad', e.target.value)}
+                                        onChange={e => setData('especialidad', e.target.value.toUpperCase())}
                                         placeholder="Ej. Ingeniería de Software, Redes y Telecomunicaciones..."
                                     />
                                     {errors.especialidad && <span className={styles.errorMsg}>{errors.especialidad}</span>}

@@ -59,12 +59,12 @@ export interface Registry {
     methods: ["POST"]
     pattern: '/profesores/agregar'
     types: {
-      body: {}
+      body: ExtractBody<InferInput<(typeof import('#validators/profesor_validator').createProfesorValidator)>>
       paramsTuple: []
       params: {}
-      query: {}
+      query: ExtractQuery<InferInput<(typeof import('#validators/profesor_validator').createProfesorValidator)>>
       response: ExtractResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['addProfesor']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['addProfesor']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['addProfesor']>>> | { status: 422; response: { errors: SimpleError[] } }
     }
   }
   'profesor.delete_profesor': {

@@ -1,6 +1,7 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import ProfesorTransformer from '#transformers/profesor_transformer'
 import Profesor from '#models/profesor'
+import { createProfesorValidator } from '#validators/profesor_validator'
 
 export default class ProfesorController {
 
@@ -16,17 +17,10 @@ export default class ProfesorController {
     }
 
     async addProfesor({ request, response }: HttpContext) {
-        const data = request.only([
-            'nombre',
-            'apellidoPaterno',
-            'apellidoMaterno',
-            'curp',
-            'email',
-            'especialidad',
-            'noCedulaProfesional',
-            'rfc',
-            'telefono',
-        ])
+        // validateUsing lanza una excepción si falla la validación.
+        // Inertia la intercepta automáticamente y regresa los errores
+        // por campo al frontend sin necesidad de manejo manual.
+        const data = await request.validateUsing(createProfesorValidator)
 
         await Profesor.create(data)
 
