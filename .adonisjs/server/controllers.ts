@@ -5,6 +5,7 @@
 
 export const controllers = {
   Carrera: () => import('#controllers/carrera_controller'),
+  Grupo: () => import('#controllers/grupo_controller'),
   NewAccount: () => import('#controllers/new_account_controller'),
   Profesor: () => import('#controllers/profesor_controller'),
   Session: () => import('#controllers/session_controller'),

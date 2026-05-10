@@ -115,6 +115,30 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/carrera_controller').default['showPlanesEstudio']>>>
     }
   }
+  'carrera.show_carrera_coordinadores': {
+    methods: ["GET","HEAD"]
+    pattern: '/carreras/coordinadores'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/carrera_controller').default['showCarreraCoordinadores']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/carrera_controller').default['showCarreraCoordinadores']>>>
+    }
+  }
+  'grupo.index': {
+    methods: ["GET","HEAD"]
+    pattern: '/carreras/grupos'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/grupo_controller').default['index']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/grupo_controller').default['index']>>>
+    }
+  }
   'new_account.create': {
     methods: ["GET","HEAD"]
     pattern: '/signup'

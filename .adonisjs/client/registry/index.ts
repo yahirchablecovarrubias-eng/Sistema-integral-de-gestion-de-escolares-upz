@@ -60,6 +60,18 @@ const routes = {
     tokens: [{"old":"/carreras/:id/plan_de_estudio","type":0,"val":"carreras","end":""},{"old":"/carreras/:id/plan_de_estudio","type":1,"val":"id","end":""},{"old":"/carreras/:id/plan_de_estudio","type":0,"val":"plan_de_estudio","end":""}],
     types: placeholder as Registry['carrera.show_planes_estudio']['types'],
   },
+  'carrera.show_carrera_coordinadores': {
+    methods: ["GET","HEAD"],
+    pattern: '/carreras/coordinadores',
+    tokens: [{"old":"/carreras/coordinadores","type":0,"val":"carreras","end":""},{"old":"/carreras/coordinadores","type":0,"val":"coordinadores","end":""}],
+    types: placeholder as Registry['carrera.show_carrera_coordinadores']['types'],
+  },
+  'grupo.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/carreras/grupos',
+    tokens: [{"old":"/carreras/grupos","type":0,"val":"carreras","end":""},{"old":"/carreras/grupos","type":0,"val":"grupos","end":""}],
+    types: placeholder as Registry['grupo.index']['types'],
+  },
   'new_account.create': {
     methods: ["GET","HEAD"],
     pattern: '/signup',

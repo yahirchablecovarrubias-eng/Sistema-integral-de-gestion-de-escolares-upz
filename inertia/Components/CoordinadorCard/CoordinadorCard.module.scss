@@ -1,0 +1,225 @@
+// ─── CoordinadorCard.module.scss ─────────────────────────────
+// Nomenclatura: styles.miClase (TSX) → .mi-clase (SCSS)
+// Variables CSS disponibles desde Layout.css
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition), transform var(--transition);
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+  }
+}
+
+// ── Zona de cabecera ──────────────────────────────────────────
+
+.card-header {
+  background: var(--color-primary);
+  padding: 1.5rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  position: relative;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.avatar-iniciales {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.03em;
+  line-height: 1;
+  user-select: none;
+}
+
+.badge-status {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  &.badge-activo {
+    background: rgba(34, 197, 94, 0.18);
+    color: #86efac;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+  }
+
+  &.badge-inactivo {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--color-text-light);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  .badge-activo & {
+    background: #4ade80;
+  }
+
+  .badge-inactivo & {
+    background: var(--color-text-light);
+  }
+}
+
+.nombre-completo {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-white);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.carrera-tag {
+  display: inline-flex;
+  align-self: center;
+  padding: 0.2rem 0.65rem;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-text-light);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+// ── Cuerpo — Datos de contacto ────────────────────────────────
+
+.card-body {
+  flex: 1;
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.contact-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-primary-light);
+  font-size: 0.9rem;
+}
+
+.contact-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  min-width: 0;
+}
+
+.contact-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.contact-value {
+  font-size: 0.85rem;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &.contact-value-link {
+    color: var(--color-primary-light);
+    text-decoration: none;
+    transition: color var(--transition);
+
+    &:hover {
+      color: var(--color-accent-hover);
+      text-decoration: underline;
+    }
+  }
+}
+
+// ── Footer — Período de coordinación ─────────────────────────
+
+.card-footer {
+  border-top: 1px solid var(--color-border);
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.periodo-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius);
+  background: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-primary);
+  font-size: 0.8rem;
+}
+
+.periodo-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+}
+
+.periodo-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.periodo-rango {
+  font-size: 0.82rem;
+  color: var(--color-text);
+  font-weight: 600;
+}

@@ -10,10 +10,10 @@ type PageProps = {
 
 
 const TABS: SubNavItem[] = [
-  { label: 'Panel Principal',            href: '/carreras' },
-  { label: 'Planes de estudio',          href: '/carreras/plan_de_estudio' },
-  { label: 'Historial de coordinadores', href: '/profesores/informacion' },
-  { label: 'Grupos',                     href: '/profesores/seguimiento' },
+  { label: 'Panel Principal', href: '/carreras' },
+  { label: 'Planes de estudio', href: '/carreras/plan_de_estudio' },
+  { label: 'Coordinadores', href: '/carreras/coordinadores' },
+  { label: 'Grupos', href: '/carreras/grupos' },
 ]
 
 export default function CarrerasIndex({ carreras }: PageProps) {
@@ -39,8 +39,8 @@ export default function CarrerasIndex({ carreras }: PageProps) {
                 key={carrera.id}
                 id={carrera.id}
                 nombre={carrera.nombre}
-                descripcion={carrera.descripcion}   
-                /* imagen={carrera.imagen} */   // descomenta cuando agregues la columna al modelo
+                descripcion={carrera.descripcion}
+              /* imagen={carrera.imagen} */   // descomenta cuando agregues la columna al modelo
               />
             ))}
           </div>

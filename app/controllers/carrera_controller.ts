@@ -2,7 +2,8 @@ import type { HttpContext } from '@adonisjs/core/http'
 import Carrera from '#models/carrera'
 import CarreraTransformer from '#transformers/carrera_transformer'
 import PlanEstudio from '#models/planEstudio'
-import Profesor from '#models/profesor'
+import Coordinador from '#models/coordinador'
+import CarreraCoordinador from '#models/carreraCoordinador'
 
 export default class CarreraController {
 
@@ -53,6 +54,37 @@ export default class CarreraController {
         }
 
     }
+    // app/controllers/carrera_controller.ts
+    // app/controllers/carrera_controller.ts  (o donde lo tengas)
+async showCarreraCoordinadores({ inertia }: HttpContext) {
+
+    const coordinadoresConCarrera = await CarreraCoordinador.query()
+        .preload('carrera')
+        .preload('coordinador')
+        .orderBy('fechaInicio', 'desc')
+        .exec()
+
+    const datos = coordinadoresConCarrera.map((relacion) => ({
+        coordinadorId: relacion.coordinador.id,
+        nombreCompleto: [
+            relacion.coordinador.nombre,
+            relacion.coordinador.apellidoPaterno,
+            relacion.coordinador.apellidoMaterno,
+        ].filter(Boolean).join(' '),
+        telefono: relacion.coordinador.telefono,
+        correo: relacion.coordinador.correo,
+        especialidad: relacion.coordinador.especialidad,
+        carreraId: relacion.carrera.id,
+        carreraNombre: relacion.carrera.nombre,
+        fechaInicio: relacion.fechaInicio,
+        fechaFin: relacion.fechaFin,
+        estaActivo: !relacion.fechaFin,
+    }))
+
+    return inertia.render('carreras/carrera_coordinador', {
+        coordinadores: datos
+    })
+}
 
 
 }
