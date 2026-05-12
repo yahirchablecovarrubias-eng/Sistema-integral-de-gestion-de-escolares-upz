@@ -66,6 +66,12 @@ const routes = {
     tokens: [{"old":"/carreras/coordinadores","type":0,"val":"carreras","end":""},{"old":"/carreras/coordinadores","type":0,"val":"coordinadores","end":""}],
     types: placeholder as Registry['carrera.show_carrera_coordinadores']['types'],
   },
+  'grupo.show_alumnos': {
+    methods: ["GET","HEAD"],
+    pattern: '/grupos/alumnos/:id',
+    tokens: [{"old":"/grupos/alumnos/:id","type":0,"val":"grupos","end":""},{"old":"/grupos/alumnos/:id","type":0,"val":"alumnos","end":""},{"old":"/grupos/alumnos/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['grupo.show_alumnos']['types'],
+  },
   'grupo.index': {
     methods: ["GET","HEAD"],
     pattern: '/carreras/grupos',

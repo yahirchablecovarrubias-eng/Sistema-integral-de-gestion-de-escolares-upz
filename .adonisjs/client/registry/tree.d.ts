@@ -17,6 +17,7 @@ export interface ApiDefinition {
     deleteProfesor: typeof routes['profesor.delete_profesor']
   }
   grupo: {
+    showAlumnos: typeof routes['grupo.show_alumnos']
     index: typeof routes['grupo.index']
   }
   newAccount: {

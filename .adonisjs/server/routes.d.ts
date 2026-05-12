@@ -14,6 +14,7 @@ export type ScannedRoutes = {
     'profesor.delete_profesor': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'carrera.show_planes_estudio': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'carrera.show_carrera_coordinadores': { paramsTuple?: []; params?: {} }
+    'grupo.show_alumnos': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'grupo.index': { paramsTuple?: []; params?: {} }
     'new_account.create': { paramsTuple?: []; params?: {} }
     'new_account.store': { paramsTuple?: []; params?: {} }
@@ -29,6 +30,7 @@ export type ScannedRoutes = {
     'profesor.show_edit_form': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'carrera.show_planes_estudio': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'carrera.show_carrera_coordinadores': { paramsTuple?: []; params?: {} }
+    'grupo.show_alumnos': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'grupo.index': { paramsTuple?: []; params?: {} }
     'new_account.create': { paramsTuple?: []; params?: {} }
     'session.create': { paramsTuple?: []; params?: {} }
@@ -41,6 +43,7 @@ export type ScannedRoutes = {
     'profesor.show_edit_form': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'carrera.show_planes_estudio': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'carrera.show_carrera_coordinadores': { paramsTuple?: []; params?: {} }
+    'grupo.show_alumnos': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'grupo.index': { paramsTuple?: []; params?: {} }
     'new_account.create': { paramsTuple?: []; params?: {} }
     'session.create': { paramsTuple?: []; params?: {} }

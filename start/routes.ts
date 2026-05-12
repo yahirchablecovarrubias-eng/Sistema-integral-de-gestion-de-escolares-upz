@@ -16,6 +16,8 @@ router.delete('/profesores/eliminar/:id', [controllers.Profesor, 'deleteProfesor
 router.get('/carreras/:id/plan_de_estudio', [controllers.Carrera, 'showPlanesEstudio'])
 router.get('/carreras/coordinadores', [controllers.Carrera, 'showCarreraCoordinadores'])
 
+
+router.get('/grupos/alumnos/:id', [controllers.Grupo, 'showAlumnos'])
 router.get('/carreras/grupos', [controllers.Grupo, 'index'])
 
 

@@ -127,6 +127,18 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/carrera_controller').default['showCarreraCoordinadores']>>>
     }
   }
+  'grupo.show_alumnos': {
+    methods: ["GET","HEAD"]
+    pattern: '/grupos/alumnos/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/grupo_controller').default['showAlumnos']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/grupo_controller').default['showAlumnos']>>>
+    }
+  }
   'grupo.index': {
     methods: ["GET","HEAD"]
     pattern: '/carreras/grupos'
