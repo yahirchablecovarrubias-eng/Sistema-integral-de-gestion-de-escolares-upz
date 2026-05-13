@@ -10,6 +10,7 @@ import type CarreraTransformer from '#transformers/carrera_transformer'
 import type PlanEstudioMateriaTransformer from '#transformers/plan_estudio_materia_transformer'
 import type ProfesorTransformer from '#transformers/profesor_transformer'
 import type UserTransformer from '#transformers/user_transformer'
+import type AlumnoTransformer from '#transformers/alumno_transformer'
 import type InertiaMiddleware from '#middleware/inertia_middleware'
 
 export namespace Data {
@@ -28,6 +29,10 @@ export namespace Data {
   export type User = InferData<UserTransformer>
   export namespace User {
     export type Variants = InferVariants<UserTransformer>
+  }
+  export type Alumno = InferData<AlumnoTransformer>
+  export namespace Alumno {
+    export type Variants = InferVariants<AlumnoTransformer>
   }
   export type SharedProps = InferSharedProps<InertiaMiddleware>
 }

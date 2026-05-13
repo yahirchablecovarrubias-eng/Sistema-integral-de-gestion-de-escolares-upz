@@ -78,6 +78,12 @@ const routes = {
     tokens: [{"old":"/carreras/grupos","type":0,"val":"carreras","end":""},{"old":"/carreras/grupos","type":0,"val":"grupos","end":""}],
     types: placeholder as Registry['grupo.index']['types'],
   },
+  'alumno.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/alumnos',
+    tokens: [{"old":"/alumnos","type":0,"val":"alumnos","end":""}],
+    types: placeholder as Registry['alumno.index']['types'],
+  },
   'new_account.create': {
     methods: ["GET","HEAD"],
     pattern: '/signup',

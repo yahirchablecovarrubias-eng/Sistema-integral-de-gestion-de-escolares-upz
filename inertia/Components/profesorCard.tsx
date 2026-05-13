@@ -38,11 +38,13 @@ export default function ProfesorCard({ profesor }: WildCardProps) {
       <div className={styles.actionButtons}>
         
         <IconBtn
-        profesor={profesor}
+        id={profesor.id}
+        rutaBase="profesores"
         tipo={1}
         />
         <IconBtn
-        profesor={profesor}
+        id={profesor.id}
+        rutaBase="profesores"
         tipo={2}
         />
       </div>

@@ -16,6 +16,7 @@ export type ScannedRoutes = {
     'carrera.show_carrera_coordinadores': { paramsTuple?: []; params?: {} }
     'grupo.show_alumnos': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'grupo.index': { paramsTuple?: []; params?: {} }
+    'alumno.index': { paramsTuple?: []; params?: {} }
     'new_account.create': { paramsTuple?: []; params?: {} }
     'new_account.store': { paramsTuple?: []; params?: {} }
     'session.create': { paramsTuple?: []; params?: {} }
@@ -32,6 +33,7 @@ export type ScannedRoutes = {
     'carrera.show_carrera_coordinadores': { paramsTuple?: []; params?: {} }
     'grupo.show_alumnos': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'grupo.index': { paramsTuple?: []; params?: {} }
+    'alumno.index': { paramsTuple?: []; params?: {} }
     'new_account.create': { paramsTuple?: []; params?: {} }
     'session.create': { paramsTuple?: []; params?: {} }
   }
@@ -45,6 +47,7 @@ export type ScannedRoutes = {
     'carrera.show_carrera_coordinadores': { paramsTuple?: []; params?: {} }
     'grupo.show_alumnos': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'grupo.index': { paramsTuple?: []; params?: {} }
+    'alumno.index': { paramsTuple?: []; params?: {} }
     'new_account.create': { paramsTuple?: []; params?: {} }
     'session.create': { paramsTuple?: []; params?: {} }
   }

@@ -20,6 +20,9 @@ export interface ApiDefinition {
     showAlumnos: typeof routes['grupo.show_alumnos']
     index: typeof routes['grupo.index']
   }
+  alumno: {
+    index: typeof routes['alumno.index']
+  }
   newAccount: {
     create: typeof routes['new_account.create']
     store: typeof routes['new_account.store']

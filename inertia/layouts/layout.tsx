@@ -24,8 +24,9 @@ export interface SidebarItem {
 const SIDEBAR_GROUPS: SidebarGroup[] = [
   {
     items: [
-      {label: 'Carreras', href: "/carreras"},
-      {label: "Profesores", href: "/profesores"}
+      { label: 'Carreras', href: "/carreras" },
+      { label: "Profesores", href: "/profesores" },
+      { label: "Alumnos", href: "/alumnos" }
     ]
   }
   // {
@@ -125,7 +126,7 @@ export default function Layout({ children }: { children: ReactElement<Data.Share
   }, [url])
 
   useEffect(() => {
-    if (children.props.flash?.error)   toast.error(children.props.flash.error)
+    if (children.props.flash?.error) toast.error(children.props.flash.error)
     if (children.props.flash?.success) toast.success(children.props.flash.success)
   })
 
