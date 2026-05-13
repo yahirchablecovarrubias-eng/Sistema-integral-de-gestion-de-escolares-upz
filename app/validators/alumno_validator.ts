@@ -47,5 +47,11 @@ export const createAlumnoValidator = vine.create({
         .maxLength(12)
         .toUpperCase(),
 
-    planEstudiosId: vine.number()
+    planEstudiosId: vine.number(),
+
+    periodo: vine.enum(['ENERO-ABRIL', 'MAYO-AGOSTO', 'SEPTIEMBRE-DICIEMBRE']),
+
+    cuatrimestre: vine.number().min(1).max(10),
+
+    estadoAcademico: vine.enum(['REGULAR', 'IRREGULAR'])
 })

@@ -6,7 +6,7 @@ import Inscripcion from '#models/inscripcion'
 import HistorialMateria from '#models/historialMateria'
 
 export default class Periodo extends PeriodoSchema {
-    static = 'periodo'
+    static table = 'periodo'
 	@hasMany(() => Grupo)
 	declare grupos: HasMany<typeof Grupo>
 

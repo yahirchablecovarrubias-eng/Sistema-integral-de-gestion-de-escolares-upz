@@ -1,4 +1,5 @@
 import { useForm } from '@inertiajs/react'
+import { useEffect } from 'react'
 import styles from './agregar.module.scss'
 import SubNav from '~/Components/subnav/SubNav'
 import { SubNavItem } from '~/Components/subnav/SubNav'
@@ -23,6 +24,9 @@ type AlumnoForm = {
     matricula: string
     telefono: string
     planEstudiosId: string   // se envía como string y el controlador lo castea a number
+    periodo: string
+    cuatrimestre: string
+    estadoAcademico: string
 }
 
 // planEstudiosId llega como number desde el servidor en modo edición
@@ -49,6 +53,9 @@ const EMPTY: AlumnoForm = {
     matricula: '',
     telefono: '',
     planEstudiosId: '',
+    periodo: '',
+    cuatrimestre: '',
+    estadoAcademico: '',
 }
 
 // ─── Componente ───────────────────────────────────────────────────────────────
@@ -67,9 +74,23 @@ export default function AgregarAlumno({ alumno, planesEstudio }: PageProps) {
                 matricula: alumno.matricula,
                 telefono: alumno.telefono,
                 planEstudiosId: String(alumno.planEstudiosId ?? ''),
+                periodo: alumno.periodo ?? '',
+                cuatrimestre: String(alumno.cuatrimestre ?? ''),
+                estadoAcademico: alumno.estadoAcademico ?? '',
             }
             : EMPTY
     )
+
+    let cuatrimestresDisponibles: number[] = [];
+    if (data.periodo === 'ENERO-ABRIL') cuatrimestresDisponibles = [2, 5, 8];
+    else if (data.periodo === 'MAYO-AGOSTO') cuatrimestresDisponibles = [3, 6, 9];
+    else if (data.periodo === 'SEPTIEMBRE-DICIEMBRE') cuatrimestresDisponibles = [1, 4, 7, 10];
+
+    useEffect(() => {
+        if (data.cuatrimestre && !cuatrimestresDisponibles.includes(Number(data.cuatrimestre))) {
+            setData('cuatrimestre', '')
+        }
+    }, [data.periodo])
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault()
@@ -244,6 +265,67 @@ export default function AgregarAlumno({ alumno, planesEstudio }: PageProps) {
                                         ))}
                                     </select>
                                     {errors.planEstudiosId && <span className={styles.errorMsg}>{errors.planEstudiosId}</span>}
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        {/* ── SECCIÓN: Datos de Inscripción ────────────── */}
+                        <fieldset className={styles.fieldset} style={{ borderLeftColor: 'var(--color-accent)' }}>
+                            <legend className={styles.legend} style={{ color: 'var(--color-accent)' }}>
+                                <span className={styles.legendDot} style={{ backgroundColor: 'var(--color-accent)' }} />
+                                Datos de Inscripción (Alta Inicial)
+                            </legend>
+
+                            <div className={styles.row}>
+                                <div className={styles.fieldGroup}>
+                                    <label className={styles.label} htmlFor="periodo">Período *</label>
+                                    <select
+                                        id="periodo"
+                                        className={`${styles.input} ${errors.periodo ? styles.inputError : ''}`}
+                                        value={data.periodo}
+                                        onChange={e => setData('periodo', e.target.value)}
+                                    >
+                                        <option value="" disabled>Seleccione un período...</option>
+                                        <option value="ENERO-ABRIL">ENERO-ABRIL</option>
+                                        <option value="MAYO-AGOSTO">MAYO-AGOSTO</option>
+                                        <option value="SEPTIEMBRE-DICIEMBRE">SEPTIEMBRE-DICIEMBRE</option>
+                                    </select>
+                                    {errors.periodo && <span className={styles.errorMsg}>{errors.periodo}</span>}
+                                </div>
+
+                                <div className={styles.fieldGroup}>
+                                    <label className={styles.label} htmlFor="cuatrimestre">Cuatrimestre *</label>
+                                    <select
+                                        id="cuatrimestre"
+                                        className={`${styles.input} ${errors.cuatrimestre ? styles.inputError : ''}`}
+                                        value={data.cuatrimestre}
+                                        onChange={e => setData('cuatrimestre', e.target.value)}
+                                        disabled={!data.periodo}
+                                    >
+                                        <option value="" disabled>Seleccione un cuatrimestre...</option>
+                                        {cuatrimestresDisponibles.map(num => (
+                                            <option key={num} value={num}>
+                                                {num}° Cuatrimestre
+                                            </option>
+                                        ))}
+                                    </select>
+                                    {errors.cuatrimestre && <span className={styles.errorMsg}>{errors.cuatrimestre}</span>}
+                                    {!data.periodo && <small style={{ color: 'var(--color-text-muted)', marginTop: '4px', fontSize: '0.75rem' }}>Seleccione un período primero</small>}
+                                </div>
+
+                                <div className={styles.fieldGroup}>
+                                    <label className={styles.label} htmlFor="estadoAcademico">Estado Académico *</label>
+                                    <select
+                                        id="estadoAcademico"
+                                        className={`${styles.input} ${errors.estadoAcademico ? styles.inputError : ''}`}
+                                        value={data.estadoAcademico}
+                                        onChange={e => setData('estadoAcademico', e.target.value)}
+                                    >
+                                        <option value="" disabled>Seleccione estado...</option>
+                                        <option value="REGULAR">REGULAR</option>
+                                        <option value="IRREGULAR">IRREGULAR</option>
+                                    </select>
+                                    {errors.estadoAcademico && <span className={styles.errorMsg}>{errors.estadoAcademico}</span>}
                                 </div>
                             </div>
                         </fieldset>

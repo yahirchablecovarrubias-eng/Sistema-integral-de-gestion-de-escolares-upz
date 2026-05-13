@@ -187,6 +187,42 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/alumno_controller').default['addAlumno']>>> | { status: 422; response: { errors: SimpleError[] } }
     }
   }
+  'alumno.show_edit_form': {
+    methods: ["GET","HEAD"]
+    pattern: '/alumnos/editar/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/alumno_controller').default['showEditForm']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/alumno_controller').default['showEditForm']>>>
+    }
+  }
+  'alumno.update_alumno': {
+    methods: ["PUT"]
+    pattern: '/alumnos/editar/:id'
+    types: {
+      body: ExtractBody<InferInput<(typeof import('#validators/alumno_validator').createAlumnoValidator)>>
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: ExtractQuery<InferInput<(typeof import('#validators/alumno_validator').createAlumnoValidator)>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/alumno_controller').default['updateAlumno']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/alumno_controller').default['updateAlumno']>>> | { status: 422; response: { errors: SimpleError[] } }
+    }
+  }
+  'alumno.delete_alumno': {
+    methods: ["DELETE"]
+    pattern: '/alumnos/eliminar/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/alumno_controller').default['deleteAlumno']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/alumno_controller').default['deleteAlumno']>>>
+    }
+  }
   'new_account.create': {
     methods: ["GET","HEAD"]
     pattern: '/signup'

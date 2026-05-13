@@ -23,6 +23,9 @@ router.get('/carreras/grupos', [controllers.Grupo, 'index'])
 router.get('/alumnos', [controllers.Alumno, 'index'])
 router.get('/alumnos/agregar', [controllers.Alumno, 'showFormAlumno'])
 router.post('/alumnos/agregar', [controllers.Alumno, 'addAlumno'])
+router.get('/alumnos/editar/:id', [controllers.Alumno, 'showEditForm'])
+router.put('/alumnos/editar/:id', [controllers.Alumno, 'updateAlumno'])
+router.delete('/alumnos/eliminar/:id', [controllers.Alumno, 'deleteAlumno'])
 
 
 

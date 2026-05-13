@@ -10,7 +10,10 @@ interface IconBtnProps {
 
 export default function IconBtn({ id, rutaBase, tipo }: IconBtnProps) {
     function handleDelete() {
-        router.delete(`/${rutaBase}/eliminar/${id}`);
+        const confirmar = window.confirm('¿Estás totalmente seguro de que deseas eliminar este registro? Esta acción no se puede deshacer.');
+        if (confirmar) {
+            router.delete(`/${rutaBase}/eliminar/${id}`);
+        }
     }
     function handleEdit() {
         router.get(`/${rutaBase}/editar/${id}`);

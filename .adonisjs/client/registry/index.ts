@@ -96,6 +96,24 @@ const routes = {
     tokens: [{"old":"/alumnos/agregar","type":0,"val":"alumnos","end":""},{"old":"/alumnos/agregar","type":0,"val":"agregar","end":""}],
     types: placeholder as Registry['alumno.add_alumno']['types'],
   },
+  'alumno.show_edit_form': {
+    methods: ["GET","HEAD"],
+    pattern: '/alumnos/editar/:id',
+    tokens: [{"old":"/alumnos/editar/:id","type":0,"val":"alumnos","end":""},{"old":"/alumnos/editar/:id","type":0,"val":"editar","end":""},{"old":"/alumnos/editar/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['alumno.show_edit_form']['types'],
+  },
+  'alumno.update_alumno': {
+    methods: ["PUT"],
+    pattern: '/alumnos/editar/:id',
+    tokens: [{"old":"/alumnos/editar/:id","type":0,"val":"alumnos","end":""},{"old":"/alumnos/editar/:id","type":0,"val":"editar","end":""},{"old":"/alumnos/editar/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['alumno.update_alumno']['types'],
+  },
+  'alumno.delete_alumno': {
+    methods: ["DELETE"],
+    pattern: '/alumnos/eliminar/:id',
+    tokens: [{"old":"/alumnos/eliminar/:id","type":0,"val":"alumnos","end":""},{"old":"/alumnos/eliminar/:id","type":0,"val":"eliminar","end":""},{"old":"/alumnos/eliminar/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['alumno.delete_alumno']['types'],
+  },
   'new_account.create': {
     methods: ["GET","HEAD"],
     pattern: '/signup',
