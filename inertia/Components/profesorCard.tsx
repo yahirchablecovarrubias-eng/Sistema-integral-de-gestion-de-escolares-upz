@@ -26,7 +26,7 @@ export default function ProfesorCard({ profesor }: WildCardProps) {
       {/* Información principal */}
       <div className={styles.infoProfesor}>
         <p className={styles.profesorName}>
-          {profesor.nombre} {profesor.apellidoPaterno}  
+          {profesor.nombre} {profesor.apellidoPaterno}
         </p>
         <div className={styles.profesorContact}>
           <span className={styles.contactItem}>{profesor.email}</span>
@@ -36,16 +36,16 @@ export default function ProfesorCard({ profesor }: WildCardProps) {
 
       {/* Botones de acción — agregar <IconBtn> aquí cuando esté listo */}
       <div className={styles.actionButtons}>
-        
+
         <IconBtn
-        id={profesor.id}
-        rutaBase="profesores"
-        tipo={1}
+          id={profesor.id}
+          rutaBase="profesores"
+          tipo={1}
         />
         <IconBtn
-        id={profesor.id}
-        rutaBase="profesores"
-        tipo={2}
+          id={profesor.id}
+          rutaBase="profesores"
+          tipo={2}
         />
       </div>
 

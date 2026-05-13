@@ -12,6 +12,8 @@ type ExtractProps<T> =
 
 declare module '@adonisjs/inertia/types' {
   export interface InertiaPages {
+    'alumnos/Agregar': ExtractProps<(typeof import('../../inertia/pages/alumnos/Agregar.tsx'))['default']>
+    'alumnos/index': ExtractProps<(typeof import('../../inertia/pages/alumnos/index.tsx'))['default']>
     'auth/login': ExtractProps<(typeof import('../../inertia/pages/auth/login.tsx'))['default']>
     'auth/signup': ExtractProps<(typeof import('../../inertia/pages/auth/signup.tsx'))['default']>
     'carreras/carrera_coordinador': ExtractProps<(typeof import('../../inertia/pages/carreras/carrera_coordinador.tsx'))['default']>
@@ -26,6 +28,5 @@ declare module '@adonisjs/inertia/types' {
     'home': ExtractProps<(typeof import('../../inertia/pages/home.tsx'))['default']>
     'profesores/Agregar': ExtractProps<(typeof import('../../inertia/pages/profesores/Agregar.tsx'))['default']>
     'profesores/index': ExtractProps<(typeof import('../../inertia/pages/profesores/index.tsx'))['default']>
-    'alumnos/index': ExtractProps<(typeof import('../../inertia/pages/alumnos/index.tsx'))['default']>
   }
 }

@@ -22,6 +22,8 @@ export interface ApiDefinition {
   }
   alumno: {
     index: typeof routes['alumno.index']
+    showFormAlumno: typeof routes['alumno.show_form_alumno']
+    addAlumno: typeof routes['alumno.add_alumno']
   }
   newAccount: {
     create: typeof routes['new_account.create']

@@ -84,6 +84,18 @@ const routes = {
     tokens: [{"old":"/alumnos","type":0,"val":"alumnos","end":""}],
     types: placeholder as Registry['alumno.index']['types'],
   },
+  'alumno.show_form_alumno': {
+    methods: ["GET","HEAD"],
+    pattern: '/alumnos/agregar',
+    tokens: [{"old":"/alumnos/agregar","type":0,"val":"alumnos","end":""},{"old":"/alumnos/agregar","type":0,"val":"agregar","end":""}],
+    types: placeholder as Registry['alumno.show_form_alumno']['types'],
+  },
+  'alumno.add_alumno': {
+    methods: ["POST"],
+    pattern: '/alumnos/agregar',
+    tokens: [{"old":"/alumnos/agregar","type":0,"val":"alumnos","end":""},{"old":"/alumnos/agregar","type":0,"val":"agregar","end":""}],
+    types: placeholder as Registry['alumno.add_alumno']['types'],
+  },
   'new_account.create': {
     methods: ["GET","HEAD"],
     pattern: '/signup',

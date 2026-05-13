@@ -163,6 +163,30 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/alumno_controller').default['index']>>>
     }
   }
+  'alumno.show_form_alumno': {
+    methods: ["GET","HEAD"]
+    pattern: '/alumnos/agregar'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/alumno_controller').default['showFormAlumno']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/alumno_controller').default['showFormAlumno']>>>
+    }
+  }
+  'alumno.add_alumno': {
+    methods: ["POST"]
+    pattern: '/alumnos/agregar'
+    types: {
+      body: ExtractBody<InferInput<(typeof import('#validators/alumno_validator').createAlumnoValidator)>>
+      paramsTuple: []
+      params: {}
+      query: ExtractQuery<InferInput<(typeof import('#validators/alumno_validator').createAlumnoValidator)>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/alumno_controller').default['addAlumno']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/alumno_controller').default['addAlumno']>>> | { status: 422; response: { errors: SimpleError[] } }
+    }
+  }
   'new_account.create': {
     methods: ["GET","HEAD"]
     pattern: '/signup'

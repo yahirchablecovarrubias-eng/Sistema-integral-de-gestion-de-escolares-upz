@@ -1,0 +1,55 @@
+// ═══════════════════════════════════════════════════════════════
+//  alumnos.module.scss  —  Layout de la vista index de Alumnos
+//  Hereda variables CSS del Layout.css
+// ═══════════════════════════════════════════════════════════════
+
+.alumnos-list {
+    display: flex;
+    flex-direction: column;
+    /* Una tarjeta debajo de la otra */
+    gap: 1rem;
+    padding: 1.5rem;
+    max-width: 800px;
+    /* Opcional: para que no se estiren infinitamente en pantallas muy grandes */
+    margin: 0 auto;
+    /* Centrar la lista */
+}
+
+.filters-bar {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    align-items: center;
+
+    input, select {
+        padding: 0.5rem 0.75rem;
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius);
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        color: var(--color-text);
+        background: var(--color-bg);
+        outline: none;
+        transition: border-color var(--transition);
+
+        &:focus {
+            border-color: var(--color-primary-light);
+        }
+    }
+
+    .search-input {
+        flex: 1;
+    }
+}
+
+.loading-indicator {
+    text-align: center;
+    padding: 2rem;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
