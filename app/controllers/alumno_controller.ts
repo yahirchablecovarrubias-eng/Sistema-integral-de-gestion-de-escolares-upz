@@ -46,7 +46,7 @@ export default class AlumnoController {
     async showFormAlumno({ inertia }: HttpContext) {
         // Obtenemos los planes de estudio vigentes (o todos, según necesites)
         const planesEstudio = await PlanEstudio.all()
-        
+
         return inertia.render('alumnos/Agregar', {
             planesEstudio: planesEstudio.map(plan => ({
                 id: plan.id,
