@@ -20,6 +20,14 @@ export default class AuthMiddleware {
     } = {}
   ) {
     await ctx.auth.authenticateUsing(options.guards, { loginRoute: this.redirectTo })
+
+    // Evitar que el navegador guarde en caché las páginas protegidas.
+    // Sin esto, al cerrar sesión y presionar "atrás" el navegador
+    // muestra la página anterior desde su caché local.
+    ctx.response.header('Cache-Control', 'no-cache, no-store, must-revalidate')
+    ctx.response.header('Pragma', 'no-cache')
+    ctx.response.header('Expires', '0')
+
     return next()
   }
 }

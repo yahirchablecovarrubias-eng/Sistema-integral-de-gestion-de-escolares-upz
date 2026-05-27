@@ -103,6 +103,54 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['deleteProfesor']>>>
     }
   }
+  'profesor.asignaturas': {
+    methods: ["GET","HEAD"]
+    pattern: '/profesores/asignaturas'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['asignaturas']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['asignaturas']>>>
+    }
+  }
+  'profesor.asignaturas_detalle': {
+    methods: ["GET","HEAD"]
+    pattern: '/profesores/asignaturas/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['asignaturasDetalle']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['asignaturasDetalle']>>>
+    }
+  }
+  'profesor.asignar_materia': {
+    methods: ["POST"]
+    pattern: '/profesores/asignaturas/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['asignarMateria']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['asignarMateria']>>>
+    }
+  }
+  'profesor.remover_materia': {
+    methods: ["DELETE"]
+    pattern: '/profesores/asignaturas/:profesorId/:grupoMateriaId'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue, ParamValue]
+      params: { profesorId: ParamValue; grupoMateriaId: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['removerMateria']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/profesor_controller').default['removerMateria']>>>
+    }
+  }
   'carrera.show_planes_estudio': {
     methods: ["GET","HEAD"]
     pattern: '/carreras/:id/plan_de_estudio'
@@ -127,6 +175,66 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/carrera_controller').default['showCarreraCoordinadores']>>>
     }
   }
+  'carrera.show_form_coordinador': {
+    methods: ["GET","HEAD"]
+    pattern: '/carreras/coordinadores/agregar'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/carrera_controller').default['showFormCoordinador']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/carrera_controller').default['showFormCoordinador']>>>
+    }
+  }
+  'carrera.add_coordinador': {
+    methods: ["POST"]
+    pattern: '/carreras/coordinadores/agregar'
+    types: {
+      body: ExtractBody<InferInput<(typeof import('#validators/coordinador_validator').createCoordinadorValidator)>>
+      paramsTuple: []
+      params: {}
+      query: ExtractQuery<InferInput<(typeof import('#validators/coordinador_validator').createCoordinadorValidator)>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/carrera_controller').default['addCoordinador']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/carrera_controller').default['addCoordinador']>>> | { status: 422; response: { errors: SimpleError[] } }
+    }
+  }
+  'carrera.show_edit_coordinador': {
+    methods: ["GET","HEAD"]
+    pattern: '/carreras/coordinadores/editar/:relacionId'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { relacionId: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/carrera_controller').default['showEditCoordinador']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/carrera_controller').default['showEditCoordinador']>>>
+    }
+  }
+  'carrera.update_coordinador': {
+    methods: ["PUT"]
+    pattern: '/carreras/coordinadores/editar/:relacionId'
+    types: {
+      body: ExtractBody<InferInput<(typeof import('#validators/coordinador_validator').createCoordinadorValidator)>>
+      paramsTuple: [ParamValue]
+      params: { relacionId: ParamValue }
+      query: ExtractQuery<InferInput<(typeof import('#validators/coordinador_validator').createCoordinadorValidator)>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/carrera_controller').default['updateCoordinador']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/carrera_controller').default['updateCoordinador']>>> | { status: 422; response: { errors: SimpleError[] } }
+    }
+  }
+  'carrera.delete_carrera_coordinador': {
+    methods: ["DELETE"]
+    pattern: '/carreras/coordinadores/eliminar/:relacionId'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { relacionId: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/carrera_controller').default['deleteCarreraCoordinador']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/carrera_controller').default['deleteCarreraCoordinador']>>>
+    }
+  }
   'grupo.show_alumnos': {
     methods: ["GET","HEAD"]
     pattern: '/grupos/alumnos/:id'
@@ -139,6 +247,30 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/grupo_controller').default['showAlumnos']>>>
     }
   }
+  'grupo.asignar_alumno': {
+    methods: ["POST"]
+    pattern: '/grupos/:grupoId/alumnos'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { grupoId: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/grupo_controller').default['asignarAlumno']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/grupo_controller').default['asignarAlumno']>>>
+    }
+  }
+  'grupo.remover_alumno': {
+    methods: ["DELETE"]
+    pattern: '/grupos/:grupoId/alumnos/:alumnoId'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue, ParamValue]
+      params: { grupoId: ParamValue; alumnoId: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/grupo_controller').default['removerAlumno']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/grupo_controller').default['removerAlumno']>>>
+    }
+  }
   'grupo.index': {
     methods: ["GET","HEAD"]
     pattern: '/carreras/grupos'
@@ -149,6 +281,30 @@ export interface Registry {
       query: {}
       response: ExtractResponse<Awaited<ReturnType<import('#controllers/grupo_controller').default['index']>>>
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/grupo_controller').default['index']>>>
+    }
+  }
+  'grupo.show_form_grupo': {
+    methods: ["GET","HEAD"]
+    pattern: '/grupos/agregar'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/grupo_controller').default['showFormGrupo']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/grupo_controller').default['showFormGrupo']>>>
+    }
+  }
+  'grupo.add_grupo': {
+    methods: ["POST"]
+    pattern: '/grupos/agregar'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/grupo_controller').default['addGrupo']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/grupo_controller').default['addGrupo']>>>
     }
   }
   'alumno.index': {
@@ -221,6 +377,30 @@ export interface Registry {
       query: {}
       response: ExtractResponse<Awaited<ReturnType<import('#controllers/alumno_controller').default['deleteAlumno']>>>
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/alumno_controller').default['deleteAlumno']>>>
+    }
+  }
+  'alumno.historial_global': {
+    methods: ["GET","HEAD"]
+    pattern: '/alumnos/historial'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/alumno_controller').default['historialGlobal']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/alumno_controller').default['historialGlobal']>>>
+    }
+  }
+  'alumno.historial_detalle': {
+    methods: ["GET","HEAD"]
+    pattern: '/alumnos/historial/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/alumno_controller').default['historialDetalle']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/alumno_controller').default['historialDetalle']>>>
     }
   }
   'new_account.create': {

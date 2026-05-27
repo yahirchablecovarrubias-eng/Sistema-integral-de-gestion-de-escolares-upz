@@ -1,4 +1,6 @@
 // ─── carrera_coordinador.tsx ──────────────────────────────────
+import { Link } from '@inertiajs/react'
+import { Plus } from 'lucide-react'
 import SubNav, { type SubNavItem } from '~/Components/subnav/SubNav'
 import CoordinadorCard, { type CoordinadorData } from '~/Components/CoordinadorCard/CoordinadorCard'
 import styles from './Carrera_coordinador.module.scss'
@@ -6,10 +8,9 @@ import styles from './Carrera_coordinador.module.scss'
 // ── Tabs de navegación secundaria ─────────────────────────────
 
 const TABS: SubNavItem[] = [
-  { label: 'Panel Principal', href: '/carreras' },
-  { label: 'Planes de estudio', href: '/carreras/plan_de_estudio' },
-  { label: 'Coordinadores', href: '/carreras/coordinadores' },
-  { label: 'Grupos', href: '/carreras/grupos' },
+    { label: 'Panel Principal', href: '/carreras' },
+    { label: 'Coordinadores', href: '/carreras/coordinadores' },
+    { label: 'Grupos', href: '/carreras/grupos' },
 ]
 // ── Props — coinciden exactamente con lo que envía el controlador
 interface PageProps {
@@ -18,10 +19,10 @@ interface PageProps {
 
 // ── Helper: agrupa el array plano por carrera ─────────────────
 interface GrupoCarrera {
-    carreraId:     number
+    carreraId: number
     carreraNombre: string
-    activos:       CoordinadorData[]
-    anteriores:    CoordinadorData[]
+    activos: CoordinadorData[]
+    anteriores: CoordinadorData[]
 }
 
 function agruparPorCarrera(coordinadores: CoordinadorData[]): GrupoCarrera[] {
@@ -30,10 +31,10 @@ function agruparPorCarrera(coordinadores: CoordinadorData[]): GrupoCarrera[] {
     for (const c of coordinadores) {
         if (!mapa.has(c.carreraId)) {
             mapa.set(c.carreraId, {
-                carreraId:     c.carreraId,
+                carreraId: c.carreraId,
                 carreraNombre: c.carreraNombre,
-                activos:       [],
-                anteriores:    [],
+                activos: [],
+                anteriores: [],
             })
         }
         const grupo = mapa.get(c.carreraId)!
@@ -58,6 +59,13 @@ export default function CarreraCoordinador({ coordinadores }: PageProps) {
             <SubNav items={TABS} />
 
             <div className={styles.page}>
+
+                <div className={styles.actionsBar}>
+                    <Link href="/carreras/coordinadores/agregar" className={styles.btnAgregar}>
+                        <Plus size={18} />
+                        Nuevo Coordinador
+                    </Link>
+                </div>
 
                 {/* ── Empty state ── */}
                 {coordinadores.length === 0 && (

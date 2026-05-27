@@ -17,6 +17,24 @@
   gap: 0.4rem;
 }
 
+.plan-title-section {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: rgba(37, 99, 168, 0.1);
+  border-radius: 12px;
+  color: var(--color-primary-light);
+}
+
 .plan-tag {
   display: inline-flex;
   align-items: center;
@@ -29,19 +47,35 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   border-radius: var(--radius);
+  margin-bottom: 0.3rem;
 }
 
 .plan-nombre {
-  font-family: var(--font-display);
-  font-size: 1.45rem;
+  font-family: var(--font-display, system-ui);
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--color-primary);
-  line-height: 1.25;
+  line-height: 1.2;
+  margin: 0 0 0.4rem 0;
 }
 
 .plan-meta {
-  font-size: 0.8125rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
   color: var(--color-text-muted);
+  margin: 0;
+
+  .meta-icon {
+    color: var(--color-primary-light);
+    margin-right: 0.1rem;
+    margin-left: 0.4rem;
+    
+    &:first-child {
+      margin-left: 0;
+    }
+  }
 }
 
 // ── Grid de cuatrimestres ──────────────────────────────────────
@@ -124,13 +158,10 @@
   line-height: 1.4;
 }
 
-.materia-dot {
+.materia-icon {
   flex-shrink: 0;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  margin-top: 0.32em;
+  color: var(--color-accent);
+  margin-top: 0.1rem;
 }
 
 .materia-nombre {

@@ -1,19 +1,95 @@
 
-.profesores-list{
-  width: 100%;
-  position: relative;
+.pageContainer {
   display: flex;
-  flex-flow: column;
-  gap: 10px;
-  padding: 10px;
-  
+  flex-direction: column;
+  width: 100%;
 }
-.campo{
-  border-radius: 999999px;
 
-  padding: 0px 20px 0px 20px;
-  border: 1px solid #00000073;
-  background-color: rgb(243, 245, 244);
-  height: 10%;
+.headerArea {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  background: var(--color-surface, #f9fafb);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  gap: 1rem;
+  z-index: 100;
+  position: sticky;
+  top: 0;
+}
 
+.searchWrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex: 1;
+  max-width: 500px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 1rem;
+  color: var(--color-text-muted, #6b7280);
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.6rem 1rem 0.6rem 2.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 9999px;
+  font-size: 0.95rem;
+  color: var(--color-primary, #1a3a5c);
+  background: rgba(243, 245, 244, 0.5);
+  transition: all 0.2s ease;
+  outline: none;
+
+  &:focus {
+    background: #ffffff;
+    border-color: var(--color-primary-light, #2563a8);
+    box-shadow: 0 0 0 3px rgba(37, 99, 168, 0.1);
+  }
+}
+
+.btnAdd {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  background: var(--color-accent, #00a896);
+  color: #ffffff;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 168, 150, 0.2);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 168, 150, 0.3);
+    filter: brightness(1.05);
+  }
+}
+
+.scrollArea {
+  padding: 1.5rem 2rem;
+  width: 100%;
+}
+
+.profesoresList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.emptyState {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--color-text-muted, #6b7280);
+  background: var(--color-surface, #ffffff);
+  border-radius: 8px;
+  border: 1px dashed rgba(0, 0, 0, 0.1);
+  font-size: 1.05rem;
 }

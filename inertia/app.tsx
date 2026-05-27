@@ -13,10 +13,13 @@ const appName = import.meta.env.VITE_APP_NAME || 'AdonisJS'
 createInertiaApp({
   title: (title) => (title ? `${title} - ${appName}` : appName),
   resolve: (name) => {
+    const noLayoutPages = ['auth/login', 'auth/signup']
     return resolvePageComponent(
       `./pages/${name}.tsx`,
       import.meta.glob('./pages/**/*.tsx'),
-      (page: ReactElement<Data.SharedProps>) => <Layout children={page} />
+      noLayoutPages.includes(name)
+        ? undefined
+        : (page: ReactElement<Data.SharedProps>) => <Layout children={page} />
     )
   },
   setup({ el, App, props }) {

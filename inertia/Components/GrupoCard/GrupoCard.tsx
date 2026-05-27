@@ -1,4 +1,5 @@
 import { Link } from '@inertiajs/react'
+import { GraduationCap, CalendarDays } from 'lucide-react'
 import styles from './GrupoCard.module.scss'
 
 export interface GrupoItem {
@@ -39,12 +40,12 @@ export default function GrupoCard({ item }: { item: GrupoItem }) {
                 <h3 className={styles.cardTitle}>{item.grupo}</h3>
                 <dl className={styles.cardMeta}>
                     <div className={styles.metaRow}>
-                        <span className={styles.metaIcon} aria-hidden="true">🎓</span>
+                        <span className={styles.metaIcon} aria-hidden="true"><GraduationCap size={16} /></span>
                         <dt className={styles.srOnly}>Carrera</dt>
                         <dd className={styles.metaValue}>{item.carrera}</dd>
                     </div>
                     <div className={styles.metaRow}>
-                        <span className={styles.metaIcon} aria-hidden="true">📅</span>
+                        <span className={styles.metaIcon} aria-hidden="true"><CalendarDays size={16} /></span>
                         <dt className={styles.srOnly}>Periodo</dt>
                         <dd className={styles.metaBadge}>{item.periodo}</dd>
                     </div>

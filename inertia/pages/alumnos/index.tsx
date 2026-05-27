@@ -30,8 +30,7 @@ interface PageProps {
 
 const TABS: SubNavItem[] = [
     { label: 'Panel Principal', href: '/alumnos' },
-    { label: 'Información Personal', href: '/alumnos/informacion' },
-    { label: 'Seguimiento', href: '/alumnos/seguimiento' },
+
     { label: 'Historial Académico', href: '/alumnos/historial' },
 ]
 
@@ -42,7 +41,7 @@ export default function AlumnosIndex({ alumnosData, filters }: PageProps) {
     const { meta } = alumnosData
     const observerTarget = useRef<HTMLDivElement>(null)
     const [isLoading, setIsLoading] = useState(false)
-    
+
     // Estado local para los filtros
     const [searchTerm, setSearchTerm] = useState(filters?.search || '')
     const [cuatrimestre, setCuatrimestre] = useState(filters?.cuatrimestre || '')
@@ -102,9 +101,9 @@ export default function AlumnosIndex({ alumnosData, filters }: PageProps) {
             <div className={styles.filtersBar}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flex: 1, position: 'relative' }}>
                     <Search size={18} color="var(--color-text-muted)" style={{ position: 'absolute', left: '10px' }} />
-                    <input 
-                        type="text" 
-                        placeholder="Buscar por nombre o matrícula..." 
+                    <input
+                        type="text"
+                        placeholder="Buscar por nombre o matrícula..."
                         className={styles.searchInput}
                         style={{ paddingLeft: '35px' }}
                         value={searchTerm}
@@ -112,10 +111,10 @@ export default function AlumnosIndex({ alumnosData, filters }: PageProps) {
                         onKeyDown={e => e.key === 'Enter' && applyFilters()}
                     />
                 </div>
-                
+
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                     <Filter size={18} color="var(--color-text-muted)" />
-                    <select 
+                    <select
                         value={cuatrimestre}
                         onChange={e => {
                             setCuatrimestre(e.target.value)
@@ -124,7 +123,7 @@ export default function AlumnosIndex({ alumnosData, filters }: PageProps) {
                         }}
                     >
                         <option value="">Todos los cuatrimestres</option>
-                        {[1,2,3,4,5,6,7,8,9,10].map(num => (
+                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
                             <option key={num} value={num}>{num}° Cuatrimestre</option>
                         ))}
                     </select>
@@ -138,7 +137,7 @@ export default function AlumnosIndex({ alumnosData, filters }: PageProps) {
                         alumno={alumno}
                     />
                 ))}
-                
+
                 {alumnos.length === 0 && (
                     <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--color-text-muted)' }}>
                         No se encontraron alumnos con los filtros actuales.

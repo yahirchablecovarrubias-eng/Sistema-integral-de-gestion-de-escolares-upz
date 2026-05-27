@@ -1,6 +1,5 @@
 import { SubNavItem } from "~/Components/subnav/SubNav"
 import SubNav from "~/Components/subnav/SubNav"
-import { Data } from "@generated/data"
 import PlanEstudioCard from "~/Components/planEstudio/PlanEstudioCard"
 
 const TABS: SubNavItem[] = [
@@ -11,19 +10,19 @@ const TABS: SubNavItem[] = [
 ]
 
 interface MateriaPlan {
-    nombre: string 
-    cuatrimestre: number | null
+  nombre: string
+  cuatrimestre: number | null
 }
 
 export interface PlanProps {
-    id: number
-    nombre: string 
-    materias: MateriaPlan[]          
+  id: number
+  nombre: string
+  materias: MateriaPlan[]
 }
 
-interface PageProps {                    
-  plan: PlanProps  
-}   
+interface PageProps {
+  plan: PlanProps
+}
 
 export default function PlanEstudio({ plan }: PageProps) {
   return (
@@ -33,7 +32,7 @@ export default function PlanEstudio({ plan }: PageProps) {
       <PlanEstudioCard
         nombre={plan.nombre}
         materias={plan.materias}
-  
+
       />
     </>
   )

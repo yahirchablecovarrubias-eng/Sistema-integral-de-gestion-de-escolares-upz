@@ -11,7 +11,6 @@ type PageProps = {
 
 const TABS: SubNavItem[] = [
   { label: 'Panel Principal', href: '/carreras' },
-  { label: 'Planes de estudio', href: '/carreras/plan_de_estudio' },
   { label: 'Coordinadores', href: '/carreras/coordinadores' },
   { label: 'Grupos', href: '/carreras/grupos' },
 ]

@@ -1,30 +1,34 @@
+import { Head } from '@inertiajs/react'
+import styles from './home.module.scss'
+
 export default function Home() {
-  return (
-    <>
-      <div className="hero">
-        <h1>It works — welcome to the power of a full-stack React app</h1>
-        <p>
-          Powered by Inertia and React, this setup blends server-driven routing with rich
-          client-side interactivity — seamless, fast, and cohesive.
-        </p>
-      </div>
+    return (
+        <div className={styles.pageContainer}>
+            <Head title="Inicio - Sistema Integral de Gestión" />
 
-      <div className="cards">
-        <a href="https://docs.adonisjs.com/introduction" target="_blank">
-          <h3>Official Docs &nbsp;›</h3>
-          <p>Comprehensive reference for building with AdonisJS</p>
-        </a>
+            <div className={styles.welcomeCard}>
+                <div className={styles.contentSection}>
+                    <h1 className={styles.title}>¡Bienvenido al Sistema Integral de Gestión Escolar!</h1>
+                    <p className={styles.description}>
+                        Este sistema está diseñado para optimizar y centralizar los procesos académicos y administrativos de la Universidad Politécnica de Zacatecas (UPZ).
+                        A través de sus diferentes módulos, podrás gestionar de manera eficiente la información de carreras, grupos, profesores y el historial académico de los alumnos.
+                    </p>
+                    <div className={styles.features}>
+                        <span className={styles.featureTag}> Gestión de Alumnos</span>
+                        <span className={styles.featureTag}> Control de Grupos</span>
+                        <span className={styles.featureTag}> Asignación Docente</span>
+                        <span className={styles.featureTag}> Historial Académico</span>
+                    </div>
+                </div>
 
-        <a href="https://adocasts.com/" target="_blank">
-          <h3>Adocasts &nbsp;›</h3>
-          <p>Guided video tutorials for everyday development</p>
-        </a>
-
-        <a href="https://discord.gg/vDcEjq6" target="_blank">
-          <h3>Discord &nbsp;›</h3>
-          <p>Connect with developers building with AdonisJS every day</p>
-        </a>
-      </div>
-    </>
-  )
+                <div className={styles.imageSection}>
+                    <img
+                        src="/IndexImg.png"
+                        alt="UPZ Sistema Integral"
+                        className={styles.heroImage}
+                    />
+                </div>
+            </div>
+        </div>
+    )
 }

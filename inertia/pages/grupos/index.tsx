@@ -5,7 +5,6 @@ import GrupoCard, { type GrupoItem } from '~/Components/GrupoCard/GrupoCard'
 
 const TABS: SubNavItem[] = [
   { label: 'Panel Principal', href: '/carreras' },
-  { label: 'Planes de estudio', href: '/carreras/plan_de_estudio' },
   { label: 'Coordinadores', href: '/carreras/coordinadores' },
   { label: 'Grupos', href: '/carreras/grupos' },
 ]
@@ -30,7 +29,7 @@ export default function GruposIndex({ grupos }: PageProps) {
             </p>
           </div>
 
-          <Link href="/grupos/crear" className={styles.btnPrimary}>
+          <Link href="/grupos/agregar" className={styles.btnPrimary}>
             + Nuevo grupo
           </Link>
         </header>

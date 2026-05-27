@@ -28,5 +28,11 @@ declare module '@adonisjs/inertia/types' {
     'home': ExtractProps<(typeof import('../../inertia/pages/home.tsx'))['default']>
     'profesores/Agregar': ExtractProps<(typeof import('../../inertia/pages/profesores/Agregar.tsx'))['default']>
     'profesores/index': ExtractProps<(typeof import('../../inertia/pages/profesores/index.tsx'))['default']>
+    'profesores/Asignaturas': ExtractProps<(typeof import('../../inertia/pages/profesores/Asignaturas.tsx'))['default']>
+    'profesores/AsignaturasDetalle': ExtractProps<(typeof import('../../inertia/pages/profesores/AsignaturasDetalle.tsx'))['default']>
+    'grupos/Agregar': ExtractProps<(typeof import('../../inertia/pages/grupos/Agregar.tsx'))['default']>
+    'alumnos/Historial': ExtractProps<(typeof import('../../inertia/pages/alumnos/Historial.tsx'))['default']>
+    'alumnos/HistorialDetalle': ExtractProps<(typeof import('../../inertia/pages/alumnos/HistorialDetalle.tsx'))['default']>
+    'carreras/AgregarCoordinador': ExtractProps<(typeof import('../../inertia/pages/carreras/AgregarCoordinador.tsx'))['default']>
   }
 }

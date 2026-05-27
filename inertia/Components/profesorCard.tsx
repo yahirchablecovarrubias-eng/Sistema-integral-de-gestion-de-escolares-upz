@@ -47,6 +47,11 @@ export default function ProfesorCard({ profesor }: WildCardProps) {
           rutaBase="profesores"
           tipo={2}
         />
+        <IconBtn
+          id={profesor.id}
+          rutaBase="profesores"
+          tipo={3}
+        />
       </div>
 
     </div>

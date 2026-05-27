@@ -1,8 +1,11 @@
 // ─── CoordinadorCard.tsx ──────────────────────────────────────
+import { Link, useForm } from '@inertiajs/react'
+import { Edit, Trash2 } from 'lucide-react'
 import styles from './CoordinadorCard.module.scss'
 
 // ── Tipo público — coincide exactamente con el controlador ────
 export interface CoordinadorData {
+    relacionId: number
     coordinadorId: number
     nombreCompleto: string
     telefono:      string | null
@@ -46,6 +49,7 @@ function formatearPeriodo(fechaInicio: string | null, fechaFin: string | null): 
 
 export default function CoordinadorCard({ coordinador }: Props) {
     const {
+        relacionId,
         nombreCompleto,
         carreraNombre,
         telefono,
@@ -56,6 +60,14 @@ export default function CoordinadorCard({ coordinador }: Props) {
         estaActivo,
     } = coordinador
 
+    const { delete: destroy } = useForm()
+
+    const handleDelete = () => {
+        if (confirm('¿Estás seguro de que deseas eliminar este registro de coordinación?')) {
+            destroy(`/carreras/coordinadores/eliminar/${relacionId}`)
+        }
+    }
+
     const iniciales = obtenerIniciales(nombreCompleto)
     const periodo   = formatearPeriodo(fechaInicio, fechaFin)
 
@@ -65,10 +77,21 @@ export default function CoordinadorCard({ coordinador }: Props) {
             {/* ── Cabecera ── */}
             <div className={styles.cardHeader}>
 
-                <span className={`${styles.badgeStatus} ${estaActivo ? styles.badgeActivo : styles.badgeInactivo}`}>
-                    <span className={styles.badgeDot} />
-                    {estaActivo ? 'Activo' : 'Inactivo'}
-                </span>
+                <div className={styles.headerActions}>
+                    <span className={`${styles.badgeStatus} ${estaActivo ? styles.badgeActivo : styles.badgeInactivo}`}>
+                        <span className={styles.badgeDot} />
+                        {estaActivo ? 'Activo' : 'Inactivo'}
+                    </span>
+                    
+                    <div className={styles.actionButtons}>
+                        <Link href={`/carreras/coordinadores/editar/${relacionId}`} className={styles.btnAction} title="Editar coordinador">
+                            <Edit size={16} />
+                        </Link>
+                        <button type="button" onClick={handleDelete} className={`${styles.btnAction} ${styles.btnDelete}`} title="Eliminar asignación">
+                            <Trash2 size={16} />
+                        </button>
+                    </div>
+                </div>
 
                 <div className={styles.avatar}>
                     <span className={styles.avatarIniciales}>{iniciales}</span>

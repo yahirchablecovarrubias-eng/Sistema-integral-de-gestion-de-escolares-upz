@@ -52,10 +52,19 @@
   user-select: none;
 }
 
-.badge-status {
+.headerActions {
   position: absolute;
   top: 1rem;
+  left: 1rem;
   right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  pointer-events: none; /* allow clicks to pass through to the header if needed, except on buttons */
+}
+
+.badge-status {
+  pointer-events: auto;
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -76,6 +85,38 @@
     background: rgba(255, 255, 255, 0.08);
     color: var(--color-text-light);
     border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+}
+
+.actionButtons {
+  display: flex;
+  gap: 0.5rem;
+  pointer-events: auto;
+}
+
+.btnAction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+  }
+}
+
+.btnDelete {
+  &:hover {
+    background: rgba(239, 68, 68, 0.8); /* Red hover for delete */
   }
 }
 

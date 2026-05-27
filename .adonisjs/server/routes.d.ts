@@ -12,16 +12,31 @@ export type ScannedRoutes = {
     'profesor.show_edit_form': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'profesor.update_profesor': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'profesor.delete_profesor': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'profesor.asignaturas': { paramsTuple?: []; params?: {} }
+    'profesor.asignaturas_detalle': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'profesor.asignar_materia': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'profesor.remover_materia': { paramsTuple: [ParamValue,ParamValue]; params: {'profesorId': ParamValue,'grupoMateriaId': ParamValue} }
     'carrera.show_planes_estudio': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'carrera.show_carrera_coordinadores': { paramsTuple?: []; params?: {} }
+    'carrera.show_form_coordinador': { paramsTuple?: []; params?: {} }
+    'carrera.add_coordinador': { paramsTuple?: []; params?: {} }
+    'carrera.show_edit_coordinador': { paramsTuple: [ParamValue]; params: {'relacionId': ParamValue} }
+    'carrera.update_coordinador': { paramsTuple: [ParamValue]; params: {'relacionId': ParamValue} }
+    'carrera.delete_carrera_coordinador': { paramsTuple: [ParamValue]; params: {'relacionId': ParamValue} }
     'grupo.show_alumnos': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'grupo.asignar_alumno': { paramsTuple: [ParamValue]; params: {'grupoId': ParamValue} }
+    'grupo.remover_alumno': { paramsTuple: [ParamValue,ParamValue]; params: {'grupoId': ParamValue,'alumnoId': ParamValue} }
     'grupo.index': { paramsTuple?: []; params?: {} }
+    'grupo.show_form_grupo': { paramsTuple?: []; params?: {} }
+    'grupo.add_grupo': { paramsTuple?: []; params?: {} }
     'alumno.index': { paramsTuple?: []; params?: {} }
     'alumno.show_form_alumno': { paramsTuple?: []; params?: {} }
     'alumno.add_alumno': { paramsTuple?: []; params?: {} }
     'alumno.show_edit_form': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'alumno.update_alumno': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'alumno.delete_alumno': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'alumno.historial_global': { paramsTuple?: []; params?: {} }
+    'alumno.historial_detalle': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'new_account.create': { paramsTuple?: []; params?: {} }
     'new_account.store': { paramsTuple?: []; params?: {} }
     'session.create': { paramsTuple?: []; params?: {} }
@@ -34,13 +49,20 @@ export type ScannedRoutes = {
     'profesor.index': { paramsTuple?: []; params?: {} }
     'profesor.show_form_profesor': { paramsTuple?: []; params?: {} }
     'profesor.show_edit_form': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'profesor.asignaturas': { paramsTuple?: []; params?: {} }
+    'profesor.asignaturas_detalle': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'carrera.show_planes_estudio': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'carrera.show_carrera_coordinadores': { paramsTuple?: []; params?: {} }
+    'carrera.show_form_coordinador': { paramsTuple?: []; params?: {} }
+    'carrera.show_edit_coordinador': { paramsTuple: [ParamValue]; params: {'relacionId': ParamValue} }
     'grupo.show_alumnos': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'grupo.index': { paramsTuple?: []; params?: {} }
+    'grupo.show_form_grupo': { paramsTuple?: []; params?: {} }
     'alumno.index': { paramsTuple?: []; params?: {} }
     'alumno.show_form_alumno': { paramsTuple?: []; params?: {} }
     'alumno.show_edit_form': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'alumno.historial_global': { paramsTuple?: []; params?: {} }
+    'alumno.historial_detalle': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'new_account.create': { paramsTuple?: []; params?: {} }
     'session.create': { paramsTuple?: []; params?: {} }
   }
@@ -50,18 +72,29 @@ export type ScannedRoutes = {
     'profesor.index': { paramsTuple?: []; params?: {} }
     'profesor.show_form_profesor': { paramsTuple?: []; params?: {} }
     'profesor.show_edit_form': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'profesor.asignaturas': { paramsTuple?: []; params?: {} }
+    'profesor.asignaturas_detalle': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'carrera.show_planes_estudio': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'carrera.show_carrera_coordinadores': { paramsTuple?: []; params?: {} }
+    'carrera.show_form_coordinador': { paramsTuple?: []; params?: {} }
+    'carrera.show_edit_coordinador': { paramsTuple: [ParamValue]; params: {'relacionId': ParamValue} }
     'grupo.show_alumnos': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'grupo.index': { paramsTuple?: []; params?: {} }
+    'grupo.show_form_grupo': { paramsTuple?: []; params?: {} }
     'alumno.index': { paramsTuple?: []; params?: {} }
     'alumno.show_form_alumno': { paramsTuple?: []; params?: {} }
     'alumno.show_edit_form': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'alumno.historial_global': { paramsTuple?: []; params?: {} }
+    'alumno.historial_detalle': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'new_account.create': { paramsTuple?: []; params?: {} }
     'session.create': { paramsTuple?: []; params?: {} }
   }
   POST: {
     'profesor.add_profesor': { paramsTuple?: []; params?: {} }
+    'profesor.asignar_materia': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'carrera.add_coordinador': { paramsTuple?: []; params?: {} }
+    'grupo.asignar_alumno': { paramsTuple: [ParamValue]; params: {'grupoId': ParamValue} }
+    'grupo.add_grupo': { paramsTuple?: []; params?: {} }
     'alumno.add_alumno': { paramsTuple?: []; params?: {} }
     'new_account.store': { paramsTuple?: []; params?: {} }
     'session.store': { paramsTuple?: []; params?: {} }
@@ -69,10 +102,14 @@ export type ScannedRoutes = {
   }
   PUT: {
     'profesor.update_profesor': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'carrera.update_coordinador': { paramsTuple: [ParamValue]; params: {'relacionId': ParamValue} }
     'alumno.update_alumno': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   DELETE: {
     'profesor.delete_profesor': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'profesor.remover_materia': { paramsTuple: [ParamValue,ParamValue]; params: {'profesorId': ParamValue,'grupoMateriaId': ParamValue} }
+    'carrera.delete_carrera_coordinador': { paramsTuple: [ParamValue]; params: {'relacionId': ParamValue} }
+    'grupo.remover_alumno': { paramsTuple: [ParamValue,ParamValue]; params: {'grupoId': ParamValue,'alumnoId': ParamValue} }
     'alumno.delete_alumno': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
 }

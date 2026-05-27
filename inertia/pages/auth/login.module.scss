@@ -1,0 +1,239 @@
+.pageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f1f38 0%, #1a3a5c 50%, #0d2d47 100%);
+  padding: 1rem;
+}
+
+.loginCard {
+  display: flex;
+  width: 100%;
+  max-width: 900px;
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Left decorative panel ─────────────────────────────── */
+
+.decorativePanel {
+  flex: 1;
+  background: linear-gradient(160deg, #1a3a5c 0%, #0f2540 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  gap: 1.5rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(0, 168, 150, 0.08);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: -40px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(0, 168, 150, 0.06);
+  }
+}
+
+.logo {
+  width: 90px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+
+.systemTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.systemSubtitle {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+}
+
+.decorDots {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+
+  span {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(0, 168, 150, 0.6);
+
+    &:nth-child(1) { transform: scale(1.4); background: #00a896; }
+    &:nth-child(2) { opacity: 0.7; }
+    &:nth-child(3) { opacity: 0.4; }
+  }
+}
+
+/* ── Right form panel ───────────────────────────────────── */
+
+.formPanel {
+  flex: 1.1;
+  padding: 3.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.formHeader {
+  margin-bottom: 2.5rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1a3a5c;
+  margin: 0 0 0.5rem;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.errorAlert {
+  background: rgba(239, 68, 68, 0.08);
+  border-left: 4px solid #ef4444;
+  color: #b91c1c;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #374151;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  input {
+    padding: 0.85rem 1rem;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #1f2937;
+    background: #f9fafb;
+    transition: all 0.2s ease;
+    outline: none;
+
+    &:focus {
+      border-color: #1a3a5c;
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(26, 58, 92, 0.1);
+    }
+
+    &::placeholder {
+      color: #d1d5db;
+    }
+  }
+}
+
+.inputError {
+  border-color: #ef4444 !important;
+}
+
+.errorText {
+  color: #ef4444;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.btnSubmit {
+  width: 100%;
+  padding: 0.9rem;
+  background: #1a3a5c;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  letter-spacing: 0.03em;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(26, 58, 92, 0.25);
+
+  &:hover:not(:disabled) {
+    background: #2563a8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(26, 58, 92, 0.35);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .loginCard {
+    flex-direction: column;
+  }
+
+  .decorativePanel {
+    padding: 2rem 1.5rem;
+    gap: 1rem;
+  }
+
+  .systemTitle {
+    font-size: 1.1rem;
+  }
+
+  .formPanel {
+    padding: 2.5rem 1.5rem;
+  }
+}

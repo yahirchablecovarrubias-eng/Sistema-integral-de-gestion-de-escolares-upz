@@ -14,8 +14,11 @@ export default class SessionController {
     response.redirect().toRoute('home')
   }
 
-  async destroy({ auth, response }: HttpContext) {
+  async destroy({ auth, inertia }: HttpContext) {
     await auth.use('web').logout()
-    response.redirect().toRoute('session.create')
+
+    // Esto fuerza al navegador a hacer una recarga completa de la ventana,
+    // destruyendo toda la memoria y el historial de React/Inertia al instante.
+    return inertia.location('/login')
   }
 }

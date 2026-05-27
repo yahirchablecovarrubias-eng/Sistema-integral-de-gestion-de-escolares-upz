@@ -1,11 +1,11 @@
-import { LucideIcon, Pencil, Trash2 } from 'lucide-react';
+import { Pencil, Trash2, BookOpen } from 'lucide-react';
 import styles from './iconBtn.module.scss'
 import { router } from "@inertiajs/react";
 
 interface IconBtnProps {
     id: number | string;
     rutaBase: string; // Ejemplo: 'profesores', 'alumnos'
-    tipo: number; // 1 = Eliminar, 2 = Editar
+    tipo: number; // 1 = Eliminar, 2 = Editar, 3 = Ver Asignaturas
 }
 
 export default function IconBtn({ id, rutaBase, tipo }: IconBtnProps) {
@@ -18,6 +18,9 @@ export default function IconBtn({ id, rutaBase, tipo }: IconBtnProps) {
     function handleEdit() {
         router.get(`/${rutaBase}/editar/${id}`);
     }
+    function handleViewSubjects() {
+        router.get(`/${rutaBase}/asignaturas/${id}`);
+    }
 
     if (tipo === 1) {
         return (
@@ -25,10 +28,16 @@ export default function IconBtn({ id, rutaBase, tipo }: IconBtnProps) {
                 <Trash2 />
             </div>
         );
-    } else {
+    } else if (tipo === 2) {
         return (
             <div className={`${styles.iconBtn} ${styles.iconBtnEdit}`} onClick={handleEdit}>
                 <Pencil />
+            </div>
+        );
+    } else if (tipo === 3) {
+        return (
+            <div className={`${styles.iconBtn} ${styles.iconBtnEdit}`} onClick={handleViewSubjects} title="Ver Asignaturas">
+                <BookOpen />
             </div>
         );
     }

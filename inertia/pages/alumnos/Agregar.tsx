@@ -27,12 +27,15 @@ type AlumnoForm = {
     periodo: string
     cuatrimestre: string
     estadoAcademico: string
+    grupoId: string
 }
 
 // planEstudiosId llega como number desde el servidor en modo edición
 type PageProps = {
     alumno?: AlumnoForm & { id: number };
-    planesEstudio: { id: number, nombre: string }[];
+    planesEstudio: { id: number, nombre: string, carreraId?: number }[];
+    periodos?: { id: number, nombre: string }[];
+    grupos?: { id: number, nombre: string, carreraId: number, cuatrimestre: number, periodoId: number }[];
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -56,11 +59,12 @@ const EMPTY: AlumnoForm = {
     periodo: '',
     cuatrimestre: '',
     estadoAcademico: '',
+    grupoId: '',
 }
 
 // ─── Componente ───────────────────────────────────────────────────────────────
 
-export default function AgregarAlumno({ alumno, planesEstudio }: PageProps) {
+export default function AgregarAlumno({ alumno, planesEstudio, periodos = [], grupos = [] }: PageProps) {
     const esEdicion = !!alumno
 
     const { data, setData, post, put, processing, errors, reset } = useForm<AlumnoForm>(
@@ -77,6 +81,7 @@ export default function AgregarAlumno({ alumno, planesEstudio }: PageProps) {
                 periodo: alumno.periodo ?? '',
                 cuatrimestre: String(alumno.cuatrimestre ?? ''),
                 estadoAcademico: alumno.estadoAcademico ?? '',
+                grupoId: alumno.grupoId ?? '',
             }
             : EMPTY
     )
@@ -91,6 +96,25 @@ export default function AgregarAlumno({ alumno, planesEstudio }: PageProps) {
             setData('cuatrimestre', '')
         }
     }, [data.periodo])
+
+    const selectedPlan = planesEstudio.find(p => p.id.toString() === data.planEstudiosId);
+    const selectedPeriodo = periodos.find(p => p.nombre === data.periodo);
+    
+    const gruposDisponibles = grupos.filter(g => 
+        selectedPlan && g.carreraId === selectedPlan.carreraId &&
+        selectedPeriodo && g.periodoId === selectedPeriodo.id &&
+        g.cuatrimestre.toString() === data.cuatrimestre
+    );
+
+    const len = gruposDisponibles.length;
+    const firstId = len > 0 ? gruposDisponibles[0].id.toString() : '';
+    useEffect(() => {
+        if (len === 1 && data.grupoId !== firstId) {
+            setData('grupoId', firstId);
+        } else if (len === 0 && data.grupoId !== '') {
+            setData('grupoId', '');
+        }
+    }, [len, firstId]);
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault()
@@ -328,6 +352,32 @@ export default function AgregarAlumno({ alumno, planesEstudio }: PageProps) {
                                     {errors.estadoAcademico && <span className={styles.errorMsg}>{errors.estadoAcademico}</span>}
                                 </div>
                             </div>
+
+                            {data.estadoAcademico === 'REGULAR' && (
+                                <div className={styles.row} style={{ marginTop: '1rem' }}>
+                                    <div className={styles.fieldGroup}>
+                                        <label className={styles.label} htmlFor="grupoId">Grupo Asignado *</label>
+                                        <select
+                                            id="grupoId"
+                                            className={`${styles.input} ${errors.grupoId ? styles.inputError : ''}`}
+                                            value={data.grupoId}
+                                            onChange={e => setData('grupoId', e.target.value)}
+                                            disabled={gruposDisponibles.length === 0}
+                                            required={data.estadoAcademico === 'REGULAR'}
+                                        >
+                                            <option value="" disabled>
+                                                {gruposDisponibles.length === 0 ? 'No hay grupos disponibles para estos criterios' : 'Seleccione un grupo...'}
+                                            </option>
+                                            {gruposDisponibles.map(g => (
+                                                <option key={g.id} value={g.id}>
+                                                    {g.nombre}
+                                                </option>
+                                            ))}
+                                        </select>
+                                        {errors.grupoId && <span className={styles.errorMsg}>{errors.grupoId}</span>}
+                                    </div>
+                                </div>
+                            )}
                         </fieldset>
 
                         {/* ── Acciones ──────────────────────────────────── */}
