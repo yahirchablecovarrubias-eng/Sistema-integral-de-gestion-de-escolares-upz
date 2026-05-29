@@ -50,15 +50,13 @@ export default function Asignaturas({ profesores }: PageProps) {
 
                             <div className={styles.asignaturasList}>
                                 {profesor.asignaturas.length > 0 ? (
-                                    profesor.asignaturas.slice(0, 3).map(asig => (
-                                        <div key={asig.id} className={styles.asignaturaItem}>
-                                            <p className={styles.materiaNombre}>{asig.materia}</p>
-                                            <div className={styles.detalles}>
-                                                <span className={`${styles.tag} ${styles.grupo}`}>{asig.grupo}</span>
-                                                <span className={`${styles.tag} ${styles.carrera}`}>{asig.carrera}</span>
-                                            </div>
+                                    <div className={styles.asignaturaItem}>
+                                        <p>{profesor.asignaturas[0].materia}</p>
+                                        <div className={styles.detalles}>
+                                            <span className={`${styles.tag} ${styles.grupo}`}>{profesor.asignaturas[0].grupo}</span>
+                                            <span className={`${styles.tag} ${styles.carrera}`}>{profesor.asignaturas[0].carrera}</span>
                                         </div>
-                                    ))
+                                    </div>
                                 ) : (
                                     <div className={styles.emptyState}>
                                         <p>Sin carga académica actual</p>
